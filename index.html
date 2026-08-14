@@ -44,7 +44,7 @@
   a{text-decoration:none;color:inherit;}
   h1,h2,h3,h4{font-family:var(--font-display);font-weight:400;text-transform:uppercase;}
   a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(--accent);outline-offset:3px;}
-  #productos,#nosotros,#contacto{scroll-margin-top:92px;}
+  #productos,#nosotros,#importaciones,#contacto{scroll-margin-top:92px;}
   .container{width:100%;max-width:1160px;margin:0 auto;padding:0 24px;}
   .mono{font-family:var(--font-mono);}
   .reveal{opacity:0;transform:translateY(16px);transition:opacity .5s ease, transform .5s ease;}
@@ -263,6 +263,26 @@
   .plate-item h3{font-family:var(--font-body);font-weight:700;text-transform:none;font-size:1rem;margin-bottom:8px;letter-spacing:0;}
   .plate-item p{color:var(--muted-light);font-size:0.88rem;}
 
+  /* FAQ — IMPORTACIONES */
+  .faq-intro{
+    background:var(--paper);border:1px solid var(--line);border-left:3px solid var(--accent-deep);
+    padding:20px 22px;margin-bottom:36px;color:var(--muted);font-size:0.95rem;max-width:720px;
+  }
+  .faq-list{border-top:1px solid var(--line);}
+  .faq-item{border-bottom:1px solid var(--line);}
+  .faq-item summary{
+    display:flex;align-items:center;gap:18px;
+    padding:22px 4px;cursor:pointer;list-style:none;
+    font-family:var(--font-body);font-weight:700;font-size:1.02rem;
+  }
+  .faq-item summary::-webkit-details-marker{display:none;}
+  .faq-item summary:hover .faq-q{color:var(--accent-deep);}
+  .faq-idx{font-family:var(--font-mono);color:var(--accent-deep);font-size:0.8rem;flex-shrink:0;}
+  .faq-q{flex:1;transition:color .2s;}
+  .faq-icon{font-family:var(--font-mono);color:var(--accent-deep);font-size:1.3rem;flex-shrink:0;transition:transform .2s;line-height:1;}
+  .faq-item[open] .faq-icon{transform:rotate(45deg);}
+  .faq-answer{padding:0 4px 26px calc(4px + 18px + 34px);color:var(--muted);font-size:0.95rem;max-width:620px;}
+
   /* CTA STRIP */
   .cta-strip{
     background:var(--accent);color:var(--bg-deep);
@@ -353,6 +373,7 @@
     <nav class="nav-links">
       <a href="#productos">Productos</a>
       <a href="#nosotros">Por qué elegirnos</a>
+      <a href="#importaciones">Importaciones</a>
       <a href="#contacto">Contacto</a>
     </nav>
     <a class="nav-cta" id="wa-nav" target="_blank" rel="noopener">
@@ -530,6 +551,43 @@
   </div>
 </section>
 
+<!-- IMPORTACIONES / FAQ -->
+<section class="section" id="importaciones">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow-tag">Panel 03 — Importaciones</span>
+      <h2>Preguntas frecuentes</h2>
+    </div>
+    <p class="faq-intro reveal">¿Necesitás importar tu producto y no sabés por dónde empezar? Estamos acá para guiarte en cada paso y realizar todo el proceso por vos, de manera segura y eficiente. Con nuestro apoyo, importar se vuelve simple y sin complicaciones.</p>
+    <div class="faq-list reveal">
+      <details class="faq-item">
+        <summary>
+          <span class="faq-idx">P.01</span>
+          <span class="faq-q">¿Qué debo hacer para importar?</span>
+          <span class="faq-icon">+</span>
+        </summary>
+        <div class="faq-answer">Primero debés solicitar la cotización de lo que deseás importar, un proceso que toma 1 o 2 días. En esta etapa vas a tener que reunir documentos como el certificado de origen y el packing list, pero nosotros te ayudamos a obtener todo lo necesario para completar la importación sin problemas.</div>
+      </details>
+      <details class="faq-item">
+        <summary>
+          <span class="faq-idx">P.02</span>
+          <span class="faq-q">¿Cuánto se demora el proceso de importación?</span>
+          <span class="faq-icon">+</span>
+        </summary>
+        <div class="faq-answer">Dependiendo del presupuesto y del método de envío que selecciones, el despacho podría tardar hasta 2 meses en llegar a Chile. Te orientamos para que encuentres la alternativa más conveniente en tiempos y costos.</div>
+      </details>
+      <details class="faq-item">
+        <summary>
+          <span class="faq-idx">P.03</span>
+          <span class="faq-q">¿Se pueden negociar las tarifas?</span>
+          <span class="faq-icon">+</span>
+        </summary>
+        <div class="faq-answer">Nosotros cotizamos generalmente con 2 o 3 navieras para ofrecerte la mejor cuota posible, garantizando siempre la opción más conveniente según tus necesidades. Nuestro objetivo es brindarte un servicio transparente, ágil y con las tarifas más competitivas del mercado, para que puedas tomar la mejor decisión con total confianza.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
 <!-- CTA -->
 <section class="section">
   <div class="container">
@@ -550,7 +608,7 @@
 <section class="section" id="contacto">
   <div class="container">
     <div class="section-head reveal">
-      <span class="eyebrow-tag">Panel 03 — Hoja de despacho</span>
+      <span class="eyebrow-tag">Panel 04 — Hoja de despacho</span>
       <h2>Hablemos por WhatsApp</h2>
       <p>Es la forma más rápida de consultar stock, medidas y precios.</p>
     </div>
