@@ -12,408 +12,335 @@
 <link rel="icon" type="image/png" href="assets/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Work+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#ffffff;
-    --bg-alt:#f4f7fa;
-    --card:#ffffff;
-    --border:#e3e8ee;
-    --text:#12151c;
-    --text-muted:#5b6472;
-    --accent:#0ea5e9;
-    --accent-dark:#0284c7;
+    --bg:#DEDBD1;
+    --bg-deep:#151412;
+    --paper:#FFFFFF;
+    --ink:#17160f;
+    --muted:#68655A;
+    --muted-light:#A9A79C;
+    --line:rgba(23,22,15,0.16);
+    --line-deep:rgba(255,255,255,0.14);
+    --accent:#FF5A1F;
+    --accent-deep:#C23D0A;
     --whatsapp:#25D366;
     --whatsapp-dark:#1ebe5b;
-    --radius:14px;
-    --font-body:'Inter', 'Segoe UI', Roboto, Arial, sans-serif;
-    --font-head:'Plus Jakarta Sans', 'Segoe UI', Roboto, Arial, sans-serif;
-    --shadow-sm:0 12px 28px -18px rgba(18,21,28,0.14);
-    --shadow-md:0 20px 40px -20px rgba(18,21,28,0.16);
-    --shadow-lg:0 18px 34px -16px rgba(18,21,28,0.22);
+    --font-display:'Anton','Archivo Black',sans-serif;
+    --font-body:'Work Sans','Segoe UI',sans-serif;
+    --font-mono:'IBM Plex Mono',monospace;
+    --radius:3px;
   }
   *{box-sizing:border-box;margin:0;padding:0;}
   html{scroll-behavior:smooth;}
   body{
     font-family:var(--font-body);
     background:var(--bg);
-    color:var(--text);
+    color:var(--ink);
     line-height:1.6;
   }
   img{max-width:100%;display:block;}
   a{text-decoration:none;color:inherit;}
-  h1,h2,h3,h4{font-family:var(--font-head);}
-  a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px;}
-  #productos,#nosotros,#contacto{scroll-margin-top:90px;}
-  .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease, transform .6s ease;}
+  h1,h2,h3,h4{font-family:var(--font-display);font-weight:400;text-transform:uppercase;}
+  a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(--accent);outline-offset:3px;}
+  #productos,#nosotros,#contacto{scroll-margin-top:92px;}
+  .container{width:100%;max-width:1160px;margin:0 auto;padding:0 24px;}
+  .mono{font-family:var(--font-mono);}
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .5s ease, transform .5s ease;}
   .reveal.is-visible{opacity:1;transform:translateY(0);}
-  .container{
-    width:100%;
-    max-width:1140px;
-    margin:0 auto;
-    padding:0 20px;
+  @media (prefers-reduced-motion: reduce){
+    .reveal{transition:none;}
+    .stretch-film{transition:none !important;}
   }
+
+  .eyebrow-tag{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-family:var(--font-mono);
+    font-weight:600;
+    font-size:0.72rem;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    color:var(--accent-deep);
+  }
+  .eyebrow-tag::before{content:"";width:7px;height:7px;background:var(--accent-deep);flex-shrink:0;}
+  .eyebrow-tag.on-dark{color:var(--accent);}
+  .eyebrow-tag.on-dark::before{background:var(--accent);}
 
   /* HEADER */
   header{
-    position:sticky;
-    top:0;
-    z-index:100;
-    background:rgba(255,255,255,0.92);
+    position:sticky;top:0;z-index:100;
+    background:rgba(255,255,255,0.9);
     backdrop-filter:blur(8px);
-    border-bottom:1px solid var(--border);
+    border-bottom:1px solid var(--line);
   }
-  .nav{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:16px 0;
-  }
-  .logo{
-    display:flex;
-    align-items:center;
-  }
-  .logo img{height:34px;width:auto;}
-  .nav-links{
-    display:flex;
-    gap:28px;
-    font-weight:600;
-    font-size:0.95rem;
-  }
-  .nav-links a{
-    color:var(--text-muted);
-    transition:color .2s;
-  }
-  .nav-links a:hover{color:var(--text);}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:16px 0;gap:20px;}
+  .logo{display:flex;align-items:center;}
+  .logo img{height:32px;width:auto;}
+  .nav-links{display:flex;gap:30px;font-family:var(--font-mono);font-weight:600;font-size:0.78rem;letter-spacing:0.6px;text-transform:uppercase;}
+  .nav-links a{color:var(--muted);transition:color .2s;border-bottom:2px solid transparent;padding-bottom:2px;}
+  .nav-links a:hover{color:var(--ink);border-color:var(--accent);}
   .nav-cta{
-    display:flex;
-    align-items:center;
-    gap:8px;
-    background:var(--whatsapp);
-    color:#fff;
-    padding:10px 18px;
-    border-radius:50px;
-    font-weight:700;
-    font-size:0.9rem;
+    display:flex;align-items:center;gap:8px;
+    background:var(--whatsapp);color:#fff;
+    padding:10px 18px;border-radius:50px;
+    font-weight:700;font-size:0.88rem;
     transition:background .2s, transform .2s;
   }
   .nav-cta:hover{background:var(--whatsapp-dark);transform:translateY(-1px);}
-  .menu-toggle{display:none;background:none;border:0;color:var(--text);font-size:1.6rem;cursor:pointer;}
+  .menu-toggle{display:none;background:none;border:1px solid var(--line);color:var(--ink);font-size:1.2rem;width:40px;height:40px;cursor:pointer;}
 
   /* HERO */
   .hero{
-    padding:90px 0 80px;
+    background:var(--bg-deep);
+    color:#fff;
+    padding:70px 0 60px;
+    position:relative;
+    overflow:hidden;
+    border-bottom:4px solid var(--accent);
+  }
+  .hero::before{
+    content:"";position:absolute;inset:0;
     background:
-      radial-gradient(circle at 85% 20%, rgba(14,165,233,0.12), transparent 45%),
-      linear-gradient(180deg, var(--bg) 0%, var(--bg-alt) 100%);
-    border-bottom:1px solid var(--border);
+      repeating-linear-gradient(90deg, rgba(255,255,255,0.025) 0 1px, transparent 1px 64px),
+      repeating-linear-gradient(0deg, rgba(255,255,255,0.025) 0 1px, transparent 1px 64px);
+    pointer-events:none;
   }
-  .hero-grid{
-    display:grid;
-    grid-template-columns:1.1fr 0.9fr;
-    gap:50px;
-    align-items:center;
-  }
-  .eyebrow{
-    display:inline-block;
-    color:var(--accent);
-    font-weight:700;
-    font-size:0.85rem;
-    letter-spacing:1.5px;
-    text-transform:uppercase;
-    margin-bottom:14px;
+  .hero-grid{display:grid;grid-template-columns:1.05fr 0.95fr;gap:56px;align-items:center;position:relative;}
+  .hero-tag{
+    display:inline-flex;align-items:center;gap:8px;
+    font-family:var(--font-mono);font-size:0.72rem;font-weight:600;
+    letter-spacing:1.5px;text-transform:uppercase;color:var(--accent);
+    border:1px solid rgba(255,90,31,0.5);
+    padding:6px 12px;margin-bottom:20px;
   }
   .hero h1{
-    font-size:clamp(2.1rem, 1.4rem + 3vw, 2.9rem);
-    font-weight:800;
-    line-height:1.15;
-    letter-spacing:-0.5px;
-    margin-bottom:18px;
+    font-size:clamp(2.3rem, 1.4rem + 3.6vw, 3.4rem);
+    line-height:0.98;
+    letter-spacing:0.2px;
+    margin-bottom:20px;
   }
-  .hero h1 em{color:var(--accent);font-style:normal;}
+  .hero h1 span{color:var(--accent);}
   .hero p{
-    color:var(--text-muted);
-    font-size:1.08rem;
-    max-width:520px;
+    font-family:var(--font-body);
+    color:#D8D6CC;
+    font-size:1.05rem;
+    max-width:480px;
     margin-bottom:30px;
   }
   .hero-actions{display:flex;gap:14px;flex-wrap:wrap;}
   .btn{
-    display:inline-flex;
-    align-items:center;
-    gap:10px;
+    display:inline-flex;align-items:center;gap:10px;
     padding:15px 26px;
-    border-radius:50px;
-    font-weight:700;
-    font-size:1rem;
-    border:1px solid transparent;
-    cursor:pointer;
-    transition:transform .2s, background .2s, border-color .2s;
+    font-weight:700;font-size:0.95rem;
+    border:1px solid transparent;cursor:pointer;
+    transition:transform .15s, background .2s, border-color .2s, color .2s;
+    font-family:var(--font-body);
   }
-  .btn-primary{
-    background:var(--whatsapp);
-    color:#fff;
-  }
+  .btn-primary{background:var(--whatsapp);color:#fff;border-radius:50px;}
   .btn-primary:hover{background:var(--whatsapp-dark);transform:translateY(-2px);}
-  .btn-outline{
-    border-color:var(--border);
-    color:var(--text);
-  }
+  .btn-outline{border-color:rgba(255,255,255,0.3);color:#fff;}
   .btn-outline:hover{border-color:var(--accent);color:var(--accent);}
-  .hero-visual{
-    background:var(--card);
-    border:1px solid var(--border);
-    border-radius:var(--radius);
-    padding:34px;
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:18px;
-    box-shadow:var(--shadow-md);
-  }
-  .swatch{
-    border-radius:10px;
-    padding:24px 16px;
-    text-align:center;
-    border:1px solid var(--border);
-  }
-  .swatch .dot{
-    width:46px;height:46px;
-    border-radius:50%;
-    margin:0 auto 12px;
-    border:1px solid var(--border);
-  }
-  .swatch.black .dot{background:#111;}
-  .swatch.clear .dot{background:linear-gradient(135deg, rgba(14,165,233,0.10), rgba(14,165,233,0.02));border-style:dashed;}
-  .swatch h4{font-size:0.95rem;font-weight:700;margin-bottom:4px;}
-  .swatch p{font-size:0.8rem;color:var(--text-muted);margin:0;}
-  .hero-visual .full{grid-column:1 / -1;}
-  .stat-row{
-    grid-column:1/-1;
-    display:flex;
-    justify-content:space-between;
-    border-top:1px solid var(--border);
-    padding-top:18px;
-    margin-top:4px;
-  }
-  .stat{text-align:center;flex:1;}
-  .stat b{display:block;font-size:1.3rem;color:var(--accent);}
-  .stat span{font-size:0.75rem;color:var(--text-muted);}
+  .btn-outline.on-light{border-color:var(--line);color:var(--ink);}
+  .btn-outline.on-light:hover{border-color:var(--accent-deep);color:var(--accent-deep);}
 
-  /* SECTION HEADINGS */
-  .section{padding:80px 0;}
-  .section-head{
-    text-align:center;
-    max-width:600px;
-    margin:0 auto 50px;
-  }
-  .section-head .eyebrow{display:block;}
-  .section-head h2{font-size:clamp(1.6rem, 1.2rem + 1.6vw, 2.1rem);font-weight:800;letter-spacing:-0.3px;margin-bottom:12px;}
-  .section-head p{color:var(--text-muted);}
-
-  .section-alt{background:var(--bg-alt);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
-
-  /* PRODUCTS */
-  .products-grid{
-    display:grid;
-    grid-template-columns:repeat(3, 1fr);
-    gap:24px;
-  }
-  .product-card{
-    background:var(--card);
-    border:1px solid var(--border);
-    border-radius:var(--radius);
-    overflow:hidden;
-    transition:transform .2s, border-color .2s, box-shadow .2s;
-    box-shadow:var(--shadow-sm);
-  }
-  .product-card:hover{transform:translateY(-4px);border-color:var(--accent);box-shadow:var(--shadow-lg);}
-  .product-media{
-    height:150px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
+  /* STRETCH SIGNATURE MODULE */
+  .stretch-card{
+    background:#0F0E0C;
+    border:1px solid rgba(255,255,255,0.12);
+    padding:26px 26px 22px;
     position:relative;
   }
-  .product-media.black{background:linear-gradient(160deg,#1a1a1a,#000);}
-  .product-media.clear{background:linear-gradient(160deg,#eef2f7,#dbe3ec);}
-  .roll{
-    width:80px;height:80px;
-    border-radius:50%;
-    border:10px solid rgba(255,255,255,0.08);
+  .stretch-card::before{
+    content:"";position:absolute;top:10px;left:10px;width:8px;height:8px;border-radius:50%;border:1px solid rgba(255,255,255,0.35);
   }
-  .product-media.black .roll{border-color:rgba(255,255,255,0.12);background:#0d0d0d;}
-  .product-media.clear .roll{border-color:rgba(18,21,28,0.12);background:rgba(18,21,28,0.04);}
-  .tag{
-    position:absolute;
-    top:12px;right:12px;
-    background:rgba(0,0,0,0.5);
-    border:1px solid rgba(255,255,255,0.15);
-    color:#fff;
-    font-size:0.7rem;
-    font-weight:700;
-    padding:4px 10px;
-    border-radius:50px;
-    text-transform:uppercase;
-    letter-spacing:0.5px;
+  .stretch-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:16px;padding-left:18px;}
+  .stretch-head .eyebrow-tag{margin:0;}
+  .stretch-value{font-family:var(--font-mono);font-weight:700;font-size:1.6rem;color:var(--accent);}
+  .stretch-track{
+    height:110px;border:1px dashed rgba(255,255,255,0.25);
+    position:relative;overflow:hidden;margin:0 18px 16px;
+    background:repeating-linear-gradient(135deg, rgba(255,255,255,0.03) 0 10px, transparent 10px 20px);
   }
-  .product-body{padding:20px;}
-  .product-body h3{font-size:1.05rem;font-weight:700;margin-bottom:6px;}
-  .product-body ul{
-    list-style:none;
-    color:var(--text-muted);
-    font-size:0.88rem;
-    margin-bottom:16px;
+  .stretch-film{
+    position:absolute;top:14px;bottom:14px;left:14px;
+    width:26%;
+    transform-origin:left center;
+    background:linear-gradient(115deg, rgba(255,255,255,0.5), rgba(255,255,255,0.06) 35%, rgba(255,255,255,0.32) 55%, rgba(255,255,255,0.06) 80%, rgba(255,255,255,0.3));
+    border:1px solid rgba(255,255,255,0.4);
+    transition:transform .06s linear;
   }
-  .product-body ul li{
-    display:flex;
-    justify-content:space-between;
-    padding:5px 0;
-    border-bottom:1px dashed var(--border);
+  .stretch-range{
+    -webkit-appearance:none;appearance:none;
+    width:calc(100% - 36px);margin:0 18px;
+    height:2px;background:rgba(255,255,255,0.3);
   }
-  .product-body ul li:last-child{border-bottom:none;}
-  .product-consult{
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
-    color:var(--whatsapp);
-    font-weight:700;
-    font-size:0.9rem;
+  .stretch-range::-webkit-slider-thumb{
+    -webkit-appearance:none;appearance:none;
+    width:20px;height:20px;border-radius:2px;
+    background:var(--accent);cursor:pointer;border:2px solid #0F0E0C;
   }
-  .note-box{
-    margin-top:36px;
-    text-align:center;
-    color:var(--text-muted);
-    font-size:0.9rem;
-    border:1px dashed var(--border);
-    border-radius:10px;
-    padding:16px;
+  .stretch-range::-moz-range-thumb{
+    width:18px;height:18px;border-radius:2px;
+    background:var(--accent);cursor:pointer;border:2px solid #0F0E0C;
+  }
+  .stretch-caption{
+    font-size:0.85rem;color:var(--muted-light);
+    margin:16px 18px 0;min-height:1.5em;
   }
 
-  /* WHY US */
-  .why-grid{
-    display:grid;
-    grid-template-columns:repeat(4, 1fr);
-    gap:24px;
+  /* SECTION HEADINGS */
+  .section{padding:76px 0;}
+  .section-head{max-width:640px;margin:0 0 44px;}
+  .section-head h2{font-size:clamp(1.7rem, 1.2rem + 2vw, 2.4rem);margin:10px 0 12px;line-height:1;}
+  .section-head p{color:var(--muted);max-width:520px;}
+  .section-alt{background:#151412;}
+
+  /* PRODUCTS — HANG TAGS */
+  .products-grid{display:grid;grid-template-columns:repeat(3, 1fr);gap:22px;}
+  .tag-card{
+    background:var(--paper);
+    border:1px solid var(--line);
+    position:relative;
+    transition:transform .2s, border-color .2s, box-shadow .2s;
   }
-  .why-card{
-    text-align:center;
-    padding:10px;
+  .tag-card:hover{transform:translateY(-4px);border-color:var(--accent-deep);box-shadow:0 16px 30px -18px rgba(23,22,15,0.35);}
+  .tag-punch{
+    position:absolute;top:14px;left:14px;width:14px;height:14px;
+    border-radius:50%;border:2px solid rgba(255,255,255,0.7);
+    background:var(--bg);box-shadow:0 0 0 1px var(--line);z-index:2;
   }
-  .why-icon{
-    width:60px;height:60px;
-    border-radius:16px;
-    background:rgba(14,165,233,0.12);
-    color:var(--accent);
-    display:flex;align-items:center;justify-content:center;
-    margin:0 auto 16px;
-    font-size:1.5rem;
-    font-weight:800;
+  .tag-media{
+    height:160px;display:flex;align-items:center;justify-content:center;position:relative;
+    border-bottom:1px dashed var(--line);
   }
-  .why-card h3{font-size:1.05rem;font-weight:700;margin-bottom:8px;}
-  .why-card p{color:var(--text-muted);font-size:0.9rem;}
+  .tag-media.black{background:#141310;}
+  .tag-media.clear{background:linear-gradient(135deg,#f4f2ea,#dbd7c9);}
+  .roll-core{width:84px;height:84px;border-radius:50%;display:flex;align-items:center;justify-content:center;}
+  .tag-media.black .roll-core{background:repeating-radial-gradient(circle, #050504 0 3px, #26231c 3px 7px);}
+  .tag-media.clear .roll-core{background:repeating-radial-gradient(circle, rgba(23,22,15,0.18) 0 3px, rgba(23,22,15,0.05) 3px 7px);}
+  .roll-tube{width:20px;height:20px;border-radius:50%;background:#B08D57;box-shadow:inset 0 0 0 2px rgba(0,0,0,0.3);}
+  .tag-swatch-label{
+    position:absolute;top:12px;right:12px;
+    font-family:var(--font-mono);font-size:0.68rem;font-weight:700;letter-spacing:1px;
+    padding:4px 9px;text-transform:uppercase;
+  }
+  .tag-media.black .tag-swatch-label{background:#fff;color:var(--ink);}
+  .tag-media.clear .tag-swatch-label{background:var(--ink);color:#fff;}
+  .tag-body{padding:20px;}
+  .tag-body h3{font-family:var(--font-body);font-weight:700;text-transform:none;font-size:1.02rem;margin-bottom:12px;letter-spacing:0;}
+  .spec{font-family:var(--font-mono);font-size:0.82rem;margin-bottom:16px;}
+  .spec > div{display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px dotted var(--line);color:var(--muted);}
+  .spec > div:last-child{border-bottom:none;}
+  .spec dd{color:var(--ink);font-weight:600;}
+  .tag-consult{
+    display:inline-flex;align-items:center;gap:6px;
+    color:var(--accent-deep);font-weight:700;font-size:0.88rem;
+  }
+  .note-box{
+    margin-top:32px;text-align:left;color:var(--muted);
+    font-family:var(--font-mono);font-size:0.82rem;
+    border-left:3px solid var(--accent-deep);
+    padding:14px 18px;background:var(--paper);
+  }
+
+  /* WHY US — SPEC PLATE */
+  .plate{
+    background:var(--bg-deep);color:#fff;
+    display:grid;grid-template-columns:repeat(4,1fr);
+    position:relative;border:1px solid var(--line-deep);
+  }
+  .plate::before,.plate::after{content:"";position:absolute;width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.3);top:12px;}
+  .plate::before{left:12px;}
+  .plate::after{right:12px;}
+  .plate-item{
+    padding:34px 26px;border-left:1px solid var(--line-deep);
+  }
+  .plate-item:first-child{border-left:none;}
+  .plate-num{font-family:var(--font-mono);font-size:0.72rem;color:var(--accent);letter-spacing:1px;margin-bottom:14px;display:block;}
+  .plate-item h3{font-family:var(--font-body);font-weight:700;text-transform:none;font-size:1rem;margin-bottom:8px;letter-spacing:0;}
+  .plate-item p{color:var(--muted-light);font-size:0.88rem;}
 
   /* CTA STRIP */
   .cta-strip{
-    background:linear-gradient(120deg, #eaf6fe, #ffffff 60%);
-    border:1px solid var(--border);
-    border-radius:var(--radius);
-    padding:50px 40px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:30px;
-    flex-wrap:wrap;
+    background:var(--accent);color:var(--bg-deep);
+    padding:48px 40px;
+    display:flex;align-items:center;justify-content:space-between;gap:30px;flex-wrap:wrap;
+    border:1px solid var(--accent-deep);
   }
-  .cta-strip h2{font-size:1.7rem;font-weight:800;margin-bottom:8px;}
-  .cta-strip p{color:var(--text-muted);}
+  .cta-strip h2{font-size:clamp(1.5rem,1.2rem+1.4vw,2rem);margin-bottom:8px;line-height:1;}
+  .cta-strip p{font-family:var(--font-body);color:#3a1a08;}
+  .cta-strip .btn-primary{background:var(--bg-deep);color:#fff;}
+  .cta-strip .btn-primary:hover{background:#000;}
 
-  /* CONTACT */
-  .contact-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:24px;
+  /* CONTACT — PACKING SLIP */
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;}
+  .slip{
+    background:var(--paper);border:1px solid var(--line);padding:30px;position:relative;
   }
-  .contact-card{
-    background:var(--card);
-    border:1px solid var(--border);
-    border-radius:var(--radius);
-    padding:30px;
-    box-shadow:var(--shadow-sm);
+  .slip-label{
+    font-family:var(--font-mono);font-size:0.7rem;letter-spacing:1.5px;color:var(--muted);
+    text-transform:uppercase;margin-bottom:16px;padding-bottom:12px;
+    border-bottom:1px dashed var(--line);
   }
-  .contact-card h3{font-size:1.2rem;font-weight:700;margin-bottom:10px;}
-  .contact-card p{color:var(--text-muted);margin-bottom:20px;font-size:0.95rem;}
-  .info-row{
-    display:flex;
-    gap:14px;
-    align-items:flex-start;
-    margin-bottom:18px;
-  }
+  .slip h3{font-family:var(--font-body);font-weight:700;text-transform:none;font-size:1.15rem;margin-bottom:10px;letter-spacing:0;}
+  .slip p{color:var(--muted);margin-bottom:20px;font-size:0.95rem;}
+  .info-row{display:flex;gap:14px;align-items:flex-start;padding:14px 0;border-bottom:1px dotted var(--line);}
+  .info-row:last-child{border-bottom:none;}
   .info-row .ic{
-    width:38px;height:38px;
-    border-radius:10px;
-    background:rgba(14,165,233,0.12);
-    color:var(--accent);
+    width:36px;height:36px;flex-shrink:0;
+    background:var(--bg);border:1px solid var(--line);
     display:flex;align-items:center;justify-content:center;
-    flex-shrink:0;
-    font-weight:800;
+    font-family:var(--font-mono);font-weight:700;color:var(--accent-deep);
   }
-  .info-row b{display:block;font-size:0.95rem;}
-  .info-row span{color:var(--text-muted);font-size:0.88rem;}
+  .info-row b{display:block;font-size:0.92rem;font-family:var(--font-mono);letter-spacing:0.4px;text-transform:uppercase;}
+  .info-row span{color:var(--muted);font-size:0.9rem;}
 
   /* FOOTER */
   footer{
-    padding:34px 0;
-    border-top:1px solid var(--border);
-    text-align:center;
-    color:var(--text-muted);
-    font-size:0.85rem;
+    padding:28px 0;background:var(--bg-deep);color:var(--muted-light);
+    text-align:center;font-family:var(--font-mono);font-size:0.78rem;letter-spacing:0.4px;
   }
 
   /* FLOATING WHATSAPP BUTTON */
   .wa-float{
-    position:fixed;
-    bottom:24px;
-    right:24px;
-    background:var(--whatsapp);
-    color:#fff;
-    width:60px;height:60px;
-    border-radius:50%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
+    position:fixed;bottom:24px;right:24px;
+    background:var(--whatsapp);color:#fff;
+    width:58px;height:58px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
     box-shadow:0 8px 24px rgba(37,211,102,0.45);
-    z-index:200;
-    transition:transform .2s;
+    z-index:200;transition:transform .2s;
   }
   .wa-float:hover{transform:scale(1.08);}
-  .wa-float svg{width:30px;height:30px;}
+  .wa-float svg{width:28px;height:28px;}
 
   @media (max-width: 900px){
     .hero-grid{grid-template-columns:1fr;}
     .products-grid{grid-template-columns:repeat(2,1fr);}
-    .why-grid{grid-template-columns:repeat(2,1fr);}
+    .plate{grid-template-columns:repeat(2,1fr);}
+    .plate-item:nth-child(3){border-left:none;}
     .contact-grid{grid-template-columns:1fr;}
   }
   @media (max-width: 640px){
     .nav-links{display:none;}
     .nav-links.open{
-      display:flex;
-      flex-direction:column;
-      position:absolute;
-      top:64px;
-      right:20px;
-      background:var(--card);
-      border:1px solid var(--border);
-      box-shadow:var(--shadow-lg);
-      border-radius:10px;
-      padding:16px 24px;
-      gap:14px;
+      display:flex;flex-direction:column;position:absolute;
+      top:64px;right:24px;left:24px;
+      background:var(--bg-deep);border:1px solid rgba(255,255,255,0.14);
+      padding:18px 20px;gap:16px;color:#fff;z-index:150;
     }
+    .nav-links.open a{color:#D8D6CC;}
     .menu-toggle{display:block;}
     .products-grid{grid-template-columns:1fr;}
-    .why-grid{grid-template-columns:1fr;}
+    .plate{grid-template-columns:1fr;}
+    .plate-item{border-left:none;border-top:1px solid var(--line-deep);}
+    .plate-item:first-child{border-top:none;}
     .cta-strip{flex-direction:column;text-align:center;}
     .nav-cta span{display:none;}
+    .stretch-track{margin:0 4px 16px;}
+    .stretch-range{width:calc(100% - 8px);margin:0 4px;}
   }
 </style>
 </head>
@@ -440,8 +367,8 @@
 <section class="hero">
   <div class="container hero-grid">
     <div>
-      <span class="eyebrow">Film Stretch Profesional</span>
-      <h1>Film stretch <em>negro y transparente</em> en todas las medidas</h1>
+      <span class="hero-tag">Film Stretch Industrial</span>
+      <h1>Film stretch <span>negro y transparente</span><br>en todas las medidas</h1>
       <p>En PackPro te ayudamos a proteger y paletizar tu mercadería con film stretch de calidad industrial. Consultanos stock, precios y despacho directo por WhatsApp.</p>
       <div class="hero-actions">
         <a href="#" class="btn btn-primary wa-link" target="_blank" rel="noopener">
@@ -451,22 +378,18 @@
         <a href="#productos" class="btn btn-outline">Ver medidas disponibles</a>
       </div>
     </div>
-    <div class="hero-visual">
-      <div class="swatch black">
-        <div class="dot"></div>
-        <h4>Negro</h4>
-        <p>Máxima opacidad</p>
+
+    <!-- SIGNATURE: STRETCH SIMULATOR -->
+    <div class="stretch-card">
+      <div class="stretch-head">
+        <span class="eyebrow-tag on-dark">Elongación real</span>
+        <span class="stretch-value mono" id="stretchValue">140%</span>
       </div>
-      <div class="swatch clear">
-        <div class="dot"></div>
-        <h4>Transparente</h4>
-        <p>Visibilidad total</p>
+      <div class="stretch-track">
+        <div class="stretch-film" id="stretchFilm"></div>
       </div>
-      <div class="stat-row">
-        <div class="stat"><b>+10</b><span>Medidas</span></div>
-        <div class="stat"><b>24-48h</b><span>Entrega</span></div>
-        <div class="stat"><b>100%</b><span>Calidad</span></div>
-      </div>
+      <input type="range" min="100" max="320" value="140" step="1" class="stretch-range" id="stretchRange" aria-label="Simular elongación del film stretch">
+      <p class="stretch-caption mono" id="stretchCaption">Deslizá para ver cuánto se estira antes de romperse.</p>
     </div>
   </div>
 </section>
@@ -475,94 +398,100 @@
 <section class="section" id="productos">
   <div class="container">
     <div class="section-head reveal">
-      <span class="eyebrow">Catálogo</span>
+      <span class="eyebrow-tag">Panel 01 — Catálogo</span>
       <h2>Medidas disponibles</h2>
       <p>Film stretch manual e industrial, en negro y transparente. Estas son medidas de referencia — consultanos stock actualizado por WhatsApp.</p>
     </div>
 
     <div class="products-grid">
 
-      <div class="product-card reveal">
-        <div class="product-media clear"><div class="roll"></div><span class="tag">Transparente</span></div>
-        <div class="product-body">
+      <div class="tag-card reveal">
+        <div class="tag-punch"></div>
+        <div class="tag-media clear"><div class="roll-core"><span class="roll-tube"></span></div><span class="tag-swatch-label">Transparente</span></div>
+        <div class="tag-body">
           <h3>Film Manual 50cm</h3>
-          <ul>
-            <li><span>Ancho</span><span>50 cm</span></li>
-            <li><span>Largo</span><span>300 m</span></li>
-            <li><span>Uso</span><span>Manual</span></li>
-          </ul>
-          <a href="#" class="wa-link product-consult">Consultar precio →</a>
+          <dl class="spec">
+            <div><dt>Ancho</dt><dd>50 cm</dd></div>
+            <div><dt>Largo</dt><dd>300 m</dd></div>
+            <div><dt>Uso</dt><dd>Manual</dd></div>
+          </dl>
+          <a href="#" class="wa-link tag-consult">Consultar precio →</a>
         </div>
       </div>
 
-      <div class="product-card reveal">
-        <div class="product-media black"><div class="roll"></div><span class="tag">Negro</span></div>
-        <div class="product-body">
+      <div class="tag-card reveal">
+        <div class="tag-punch"></div>
+        <div class="tag-media black"><div class="roll-core"><span class="roll-tube"></span></div><span class="tag-swatch-label">Negro</span></div>
+        <div class="tag-body">
           <h3>Film Manual 50cm</h3>
-          <ul>
-            <li><span>Ancho</span><span>50 cm</span></li>
-            <li><span>Largo</span><span>300 m</span></li>
-            <li><span>Uso</span><span>Manual</span></li>
-          </ul>
-          <a href="#" class="wa-link product-consult">Consultar precio →</a>
+          <dl class="spec">
+            <div><dt>Ancho</dt><dd>50 cm</dd></div>
+            <div><dt>Largo</dt><dd>300 m</dd></div>
+            <div><dt>Uso</dt><dd>Manual</dd></div>
+          </dl>
+          <a href="#" class="wa-link tag-consult">Consultar precio →</a>
         </div>
       </div>
 
-      <div class="product-card reveal">
-        <div class="product-media clear"><div class="roll"></div><span class="tag">Transparente</span></div>
-        <div class="product-body">
+      <div class="tag-card reveal">
+        <div class="tag-punch"></div>
+        <div class="tag-media clear"><div class="roll-core"><span class="roll-tube"></span></div><span class="tag-swatch-label">Transparente</span></div>
+        <div class="tag-body">
           <h3>Film Manual 45cm</h3>
-          <ul>
-            <li><span>Ancho</span><span>45 cm</span></li>
-            <li><span>Largo</span><span>250 m</span></li>
-            <li><span>Uso</span><span>Manual</span></li>
-          </ul>
-          <a href="#" class="wa-link product-consult">Consultar precio →</a>
+          <dl class="spec">
+            <div><dt>Ancho</dt><dd>45 cm</dd></div>
+            <div><dt>Largo</dt><dd>250 m</dd></div>
+            <div><dt>Uso</dt><dd>Manual</dd></div>
+          </dl>
+          <a href="#" class="wa-link tag-consult">Consultar precio →</a>
         </div>
       </div>
 
-      <div class="product-card reveal">
-        <div class="product-media black"><div class="roll"></div><span class="tag">Negro</span></div>
-        <div class="product-body">
+      <div class="tag-card reveal">
+        <div class="tag-punch"></div>
+        <div class="tag-media black"><div class="roll-core"><span class="roll-tube"></span></div><span class="tag-swatch-label">Negro</span></div>
+        <div class="tag-body">
           <h3>Film Industrial 50cm</h3>
-          <ul>
-            <li><span>Ancho</span><span>50 cm</span></li>
-            <li><span>Largo</span><span>1000 m</span></li>
-            <li><span>Uso</span><span>Máquina</span></li>
-          </ul>
-          <a href="#" class="wa-link product-consult">Consultar precio →</a>
+          <dl class="spec">
+            <div><dt>Ancho</dt><dd>50 cm</dd></div>
+            <div><dt>Largo</dt><dd>1000 m</dd></div>
+            <div><dt>Uso</dt><dd>Máquina</dd></div>
+          </dl>
+          <a href="#" class="wa-link tag-consult">Consultar precio →</a>
         </div>
       </div>
 
-      <div class="product-card reveal">
-        <div class="product-media clear"><div class="roll"></div><span class="tag">Transparente</span></div>
-        <div class="product-body">
+      <div class="tag-card reveal">
+        <div class="tag-punch"></div>
+        <div class="tag-media clear"><div class="roll-core"><span class="roll-tube"></span></div><span class="tag-swatch-label">Transparente</span></div>
+        <div class="tag-body">
           <h3>Film Industrial 50cm</h3>
-          <ul>
-            <li><span>Ancho</span><span>50 cm</span></li>
-            <li><span>Largo</span><span>1000 m</span></li>
-            <li><span>Uso</span><span>Máquina</span></li>
-          </ul>
-          <a href="#" class="wa-link product-consult">Consultar precio →</a>
+          <dl class="spec">
+            <div><dt>Ancho</dt><dd>50 cm</dd></div>
+            <div><dt>Largo</dt><dd>1000 m</dd></div>
+            <div><dt>Uso</dt><dd>Máquina</dd></div>
+          </dl>
+          <a href="#" class="wa-link tag-consult">Consultar precio →</a>
         </div>
       </div>
 
-      <div class="product-card reveal">
-        <div class="product-media black"><div class="roll"></div><span class="tag">Negro</span></div>
-        <div class="product-body">
+      <div class="tag-card reveal">
+        <div class="tag-punch"></div>
+        <div class="tag-media black"><div class="roll-core"><span class="roll-tube"></span></div><span class="tag-swatch-label">Negro</span></div>
+        <div class="tag-body">
           <h3>Film Manual 45cm</h3>
-          <ul>
-            <li><span>Ancho</span><span>45 cm</span></li>
-            <li><span>Largo</span><span>250 m</span></li>
-            <li><span>Uso</span><span>Manual</span></li>
-          </ul>
-          <a href="#" class="wa-link product-consult">Consultar precio →</a>
+          <dl class="spec">
+            <div><dt>Ancho</dt><dd>45 cm</dd></div>
+            <div><dt>Largo</dt><dd>250 m</dd></div>
+            <div><dt>Uso</dt><dd>Manual</dd></div>
+          </dl>
+          <a href="#" class="wa-link tag-consult">Consultar precio →</a>
         </div>
       </div>
 
     </div>
 
-    <div class="note-box">
+    <div class="note-box mono">
       Medidas de ejemplo para completar más adelante con tu catálogo real (anchos, largos, micronaje y precios).
     </div>
   </div>
@@ -572,28 +501,28 @@
 <section class="section section-alt" id="nosotros">
   <div class="container">
     <div class="section-head reveal">
-      <span class="eyebrow">PackPro</span>
-      <h2>Por qué elegirnos</h2>
-      <p>Trabajamos para que embalar tu mercadería sea simple, rápido y seguro.</p>
+      <span class="eyebrow-tag on-dark">Panel 02 — Placa técnica</span>
+      <h2 style="color:#fff;">Por qué elegirnos</h2>
+      <p style="color:var(--muted-light);">Trabajamos para que embalar tu mercadería sea simple, rápido y seguro.</p>
     </div>
-    <div class="why-grid">
-      <div class="why-card reveal">
-        <div class="why-icon">✓</div>
+    <div class="plate reveal">
+      <div class="plate-item">
+        <span class="plate-num mono">01 / RESISTENCIA</span>
         <h3>Calidad garantizada</h3>
         <p>Film de alta resistencia y elongación para una sujeción segura.</p>
       </div>
-      <div class="why-card reveal">
-        <div class="why-icon">↔</div>
+      <div class="plate-item">
+        <span class="plate-num mono">02 / MEDIDAS</span>
         <h3>Variedad de medidas</h3>
         <p>Rollos manuales e industriales, en negro y transparente.</p>
       </div>
-      <div class="why-card reveal">
-        <div class="why-icon">⚡</div>
+      <div class="plate-item">
+        <span class="plate-num mono">03 / ENTREGA</span>
         <h3>Entrega rápida</h3>
         <p>Coordinamos despacho o retiro en poco tiempo.</p>
       </div>
-      <div class="why-card reveal">
-        <div class="why-icon">$</div>
+      <div class="plate-item">
+        <span class="plate-num mono">04 / PRECIO</span>
         <h3>Precios por volumen</h3>
         <p>Descuentos especiales para compras mayoristas.</p>
       </div>
@@ -621,12 +550,13 @@
 <section class="section" id="contacto">
   <div class="container">
     <div class="section-head reveal">
-      <span class="eyebrow">Contacto</span>
+      <span class="eyebrow-tag">Panel 03 — Hoja de despacho</span>
       <h2>Hablemos por WhatsApp</h2>
       <p>Es la forma más rápida de consultar stock, medidas y precios.</p>
     </div>
     <div class="contact-grid">
-      <div class="contact-card">
+      <div class="slip reveal">
+        <div class="slip-label mono">Contacto directo</div>
         <h3>Contactanos directo</h3>
         <p>Tocá el botón y te respondemos a la brevedad. Contanos qué medida y cantidad necesitás.</p>
         <a href="#" class="btn btn-primary wa-link" target="_blank" rel="noopener" style="width:100%;justify-content:center;">
@@ -634,23 +564,24 @@
           Enviar mensaje
         </a>
       </div>
-      <div class="contact-card">
+      <div class="slip reveal">
+        <div class="slip-label mono">Datos de contacto</div>
         <div class="info-row">
-          <div class="ic">☎</div>
+          <div class="ic">@</div>
           <div>
             <b>WhatsApp</b>
             <span id="phone-display">+56 9 5850 1731</span>
           </div>
         </div>
         <div class="info-row">
-          <div class="ic">🕒</div>
+          <div class="ic">Hr</div>
           <div>
             <b>Horario de atención</b>
             <span>Lunes a viernes, 9:00 a 18:00 hs</span>
           </div>
         </div>
         <div class="info-row">
-          <div class="ic">📦</div>
+          <div class="ic">Tx</div>
           <div>
             <b>Despacho</b>
             <span>Consultá zonas y costos de envío</span>
@@ -663,7 +594,7 @@
 
 <footer>
   <div class="container">
-    &copy; <span id="year"></span> PackPro — Film Stretch. Todos los derechos reservados.
+    © <span id="year"></span> PACKPRO — FILM STRETCH. TODOS LOS DERECHOS RESERVADOS.
   </div>
 </footer>
 
@@ -696,15 +627,39 @@
 
   // Scroll reveal
   const revealEls = document.querySelectorAll(".reveal");
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting){
-        entry.target.classList.add("is-visible");
-        observer.unobserve(entry.target);
-      }
-    });
-  }, {threshold:0.15});
-  revealEls.forEach(el => observer.observe(el));
+  if("IntersectionObserver" in window){
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {threshold:0.15});
+    revealEls.forEach(el => observer.observe(el));
+  } else {
+    revealEls.forEach(el => el.classList.add("is-visible"));
+  }
+
+  // Signature module: stretch simulator
+  const range = document.getElementById("stretchRange");
+  const film = document.getElementById("stretchFilm");
+  const valueLabel = document.getElementById("stretchValue");
+  const caption = document.getElementById("stretchCaption");
+  function updateStretch(){
+    const v = Number(range.value);
+    valueLabel.textContent = v + "%";
+    film.style.transform = "scaleX(" + (v / 100) + ")";
+    if(v < 150){
+      caption.textContent = "Recién empieza a estirarse.";
+    } else if(v < 250){
+      caption.textContent = "Así trabaja todos los días, sujetando tu carga.";
+    } else {
+      caption.textContent = "Al límite — y sigue sin romperse.";
+    }
+  }
+  range.addEventListener("input", updateStretch);
+  updateStretch();
 </script>
 
 </body>
