@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PackPro | Film Stretch</title>
+<meta name="description" content="PackPro - Venta de film stretch negro y transparente en distintas medidas. Consultá stock y precios por WhatsApp.">
+<link rel="icon" type="image/png" href="assets/logo.png">
+<style>
+  :root{
+    --bg:#ffffff;
+    --bg-alt:#f4f7fa;
+    --card:#ffffff;
+    --border:#e3e8ee;
+    --text:#12151c;
+    --text-muted:#5b6472;
+    --accent:#0ea5e9;
+    --accent-dark:#0284c7;
+    --whatsapp:#25D366;
+    --whatsapp-dark:#1ebe5b;
+    --radius:14px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.6;
+  }
+  img{max-width:100%;display:block;}
+  a{text-decoration:none;color:inherit;}
+  .container{
+    width:100%;
+    max-width:1140px;
+    margin:0 auto;
+    padding:0 20px;
+  }
+
+  /* HEADER */
+  header{
+    position:sticky;
+    top:0;
+    z-index:100;
+    background:rgba(255,255,255,0.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--border);
+  }
+  .nav{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:16px 0;
+  }
+  .logo{
+    display:flex;
+    align-items:center;
+  }
+  .logo img{height:34px;width:auto;}
+  .nav-links{
+    display:flex;
+    gap:28px;
+    font-weight:600;
+    font-size:0.95rem;
+  }
+  .nav-links a{
+    color:var(--text-muted);
+    transition:color .2s;
+  }
+  .nav-links a:hover{color:var(--text);}
+  .nav-cta{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    background:var(--whatsapp);
+    color:#fff;
+    padding:10px 18px;
+    border-radius:50px;
+    font-weight:700;
+    font-size:0.9rem;
+    transition:background .2s, transform .2s;
+  }
+  .nav-cta:hover{background:var(--whatsapp-dark);transform:translateY(-1px);}
+  .menu-toggle{display:none;background:none;border:0;color:var(--text);font-size:1.6rem;cursor:pointer;}
+
+  /* HERO */
+  .hero{
+    padding:90px 0 80px;
+    background:
+      radial-gradient(circle at 85% 20%, rgba(14,165,233,0.12), transparent 45%),
+      linear-gradient(180deg, var(--bg) 0%, var(--bg-alt) 100%);
+    border-bottom:1px solid var(--border);
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    gap:50px;
+    align-items:center;
+  }
+  .eyebrow{
+    display:inline-block;
+    color:var(--accent);
+    font-weight:700;
+    font-size:0.85rem;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    margin-bottom:14px;
+  }
+  .hero h1{
+    font-size:2.8rem;
+    font-weight:800;
+    line-height:1.15;
+    margin-bottom:18px;
+  }
+  .hero h1 em{color:var(--accent);font-style:normal;}
+  .hero p{
+    color:var(--text-muted);
+    font-size:1.08rem;
+    max-width:520px;
+    margin-bottom:30px;
+  }
+  .hero-actions{display:flex;gap:14px;flex-wrap:wrap;}
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding:15px 26px;
+    border-radius:50px;
+    font-weight:700;
+    font-size:1rem;
+    border:1px solid transparent;
+    cursor:pointer;
+    transition:transform .2s, background .2s, border-color .2s;
+  }
+  .btn-primary{
+    background:var(--whatsapp);
+    color:#fff;
+  }
+  .btn-primary:hover{background:var(--whatsapp-dark);transform:translateY(-2px);}
+  .btn-outline{
+    border-color:var(--border);
+    color:var(--text);
+  }
+  .btn-outline:hover{border-color:var(--accent);color:var(--accent);}
+  .hero-visual{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    padding:34px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
+    box-shadow:0 20px 40px -20px rgba(18,21,28,0.12);
+  }
+  .swatch{
+    border-radius:10px;
+    padding:24px 16px;
+    text-align:center;
+    border:1px solid var(--border);
+  }
+  .swatch .dot{
+    width:46px;height:46px;
+    border-radius:50%;
+    margin:0 auto 12px;
+    border:1px solid var(--border);
+  }
+  .swatch.black .dot{background:#111;}
+  .swatch.clear .dot{background:linear-gradient(135deg, rgba(14,165,233,0.10), rgba(14,165,233,0.02));border-style:dashed;}
+  .swatch h4{font-size:0.95rem;font-weight:700;margin-bottom:4px;}
+  .swatch p{font-size:0.8rem;color:var(--text-muted);margin:0;}
+  .hero-visual .full{grid-column:1 / -1;}
+  .stat-row{
+    grid-column:1/-1;
+    display:flex;
+    justify-content:space-between;
+    border-top:1px solid var(--border);
+    padding-top:18px;
+    margin-top:4px;
+  }
+  .stat{text-align:center;flex:1;}
+  .stat b{display:block;font-size:1.3rem;color:var(--accent);}
+  .stat span{font-size:0.75rem;color:var(--text-muted);}
+
+  /* SECTION HEADINGS */
+  .section{padding:80px 0;}
+  .section-head{
+    text-align:center;
+    max-width:600px;
+    margin:0 auto 50px;
+  }
+  .section-head .eyebrow{display:block;}
+  .section-head h2{font-size:2.1rem;font-weight:800;margin-bottom:12px;}
+  .section-head p{color:var(--text-muted);}
+
+  .section-alt{background:var(--bg-alt);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+
+  /* PRODUCTS */
+  .products-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:24px;
+  }
+  .product-card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    overflow:hidden;
+    transition:transform .2s, border-color .2s, box-shadow .2s;
+    box-shadow:0 12px 28px -18px rgba(18,21,28,0.14);
+  }
+  .product-card:hover{transform:translateY(-4px);border-color:var(--accent);box-shadow:0 18px 34px -16px rgba(18,21,28,0.2);}
+  .product-media{
+    height:150px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+  }
+  .product-media.black{background:linear-gradient(160deg,#1a1a1a,#000);}
+  .product-media.clear{background:linear-gradient(160deg,#eef2f7,#dbe3ec);}
+  .roll{
+    width:80px;height:80px;
+    border-radius:50%;
+    border:10px solid rgba(255,255,255,0.08);
+  }
+  .product-media.black .roll{border-color:rgba(255,255,255,0.12);background:#0d0d0d;}
+  .product-media.clear .roll{border-color:rgba(18,21,28,0.12);background:rgba(18,21,28,0.04);}
+  .tag{
+    position:absolute;
+    top:12px;right:12px;
+    background:rgba(0,0,0,0.5);
+    border:1px solid rgba(255,255,255,0.15);
+    color:#fff;
+    font-size:0.7rem;
+    font-weight:700;
+    padding:4px 10px;
+    border-radius:50px;
+    text-transform:uppercase;
+    letter-spacing:0.5px;
+  }
+  .product-body{padding:20px;}
+  .product-body h3{font-size:1.05rem;font-weight:700;margin-bottom:6px;}
+  .product-body ul{
+    list-style:none;
+    color:var(--text-muted);
+    font-size:0.88rem;
+    margin-bottom:16px;
+  }
+  .product-body ul li{
+    display:flex;
+    justify-content:space-between;
+    padding:5px 0;
+    border-bottom:1px dashed var(--border);
+  }
+  .product-body ul li:last-child{border-bottom:none;}
+  .product-consult{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    color:var(--whatsapp);
+    font-weight:700;
+    font-size:0.9rem;
+  }
+  .note-box{
+    margin-top:36px;
+    text-align:center;
+    color:var(--text-muted);
+    font-size:0.9rem;
+    border:1px dashed var(--border);
+    border-radius:10px;
+    padding:16px;
+  }
+
+  /* WHY US */
+  .why-grid{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:24px;
+  }
+  .why-card{
+    text-align:center;
+    padding:10px;
+  }
+  .why-icon{
+    width:60px;height:60px;
+    border-radius:16px;
+    background:rgba(14,165,233,0.12);
+    color:var(--accent);
+    display:flex;align-items:center;justify-content:center;
+    margin:0 auto 16px;
+    font-size:1.5rem;
+    font-weight:800;
+  }
+  .why-card h3{font-size:1.05rem;font-weight:700;margin-bottom:8px;}
+  .why-card p{color:var(--text-muted);font-size:0.9rem;}
+
+  /* CTA STRIP */
+  .cta-strip{
+    background:linear-gradient(120deg, #eaf6fe, #ffffff 60%);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    padding:50px 40px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:30px;
+    flex-wrap:wrap;
+  }
+  .cta-strip h2{font-size:1.7rem;font-weight:800;margin-bottom:8px;}
+  .cta-strip p{color:var(--text-muted);}
+
+  /* CONTACT */
+  .contact-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:24px;
+  }
+  .contact-card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    padding:30px;
+    box-shadow:0 12px 28px -18px rgba(18,21,28,0.14);
+  }
+  .contact-card h3{font-size:1.2rem;font-weight:700;margin-bottom:10px;}
+  .contact-card p{color:var(--text-muted);margin-bottom:20px;font-size:0.95rem;}
+  .info-row{
+    display:flex;
+    gap:14px;
+    align-items:flex-start;
+    margin-bottom:18px;
+  }
+  .info-row .ic{
+    width:38px;height:38px;
+    border-radius:10px;
+    background:rgba(14,165,233,0.12);
+    color:var(--accent);
+    display:flex;align-items:center;justify-content:center;
+    flex-shrink:0;
+    font-weight:800;
+  }
+  .info-row b{display:block;font-size:0.95rem;}
+  .info-row span{color:var(--text-muted);font-size:0.88rem;}
+
+  /* FOOTER */
+  footer{
+    padding:34px 0;
+    border-top:1px solid var(--border);
+    text-align:center;
+    color:var(--text-muted);
+    font-size:0.85rem;
+  }
+
+  /* FLOATING WHATSAPP BUTTON */
+  .wa-float{
+    position:fixed;
+    bottom:24px;
+    right:24px;
+    background:var(--whatsapp);
+    color:#fff;
+    width:60px;height:60px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-shadow:0 8px 24px rgba(37,211,102,0.45);
+    z-index:200;
+    transition:transform .2s;
+  }
+  .wa-float:hover{transform:scale(1.08);}
+  .wa-float svg{width:30px;height:30px;}
+
+  @media (max-width: 900px){
+    .hero-grid{grid-template-columns:1fr;}
+    .products-grid{grid-template-columns:repeat(2,1fr);}
+    .why-grid{grid-template-columns:repeat(2,1fr);}
+    .contact-grid{grid-template-columns:1fr;}
+  }
+  @media (max-width: 640px){
+    .nav-links{display:none;}
+    .menu-toggle{display:block;}
+    .hero h1{font-size:2.1rem;}
+    .products-grid{grid-template-columns:1fr;}
+    .why-grid{grid-template-columns:1fr;}
+    .cta-strip{flex-direction:column;text-align:center;}
+    .nav-cta span{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="container nav">
+    <div class="logo"><img src="assets/logo.png" alt="PackPro"></div>
+    <nav class="nav-links">
+      <a href="#productos">Productos</a>
+      <a href="#nosotros">Por qué elegirnos</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a class="nav-cta" id="wa-nav" target="_blank" rel="noopener">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.29-1.39a9.9 9.9 0 0 0 4.75 1.21h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm5.8 14.13c-.24.68-1.4 1.32-1.93 1.4-.5.08-1.12.11-1.81-.11-.42-.13-.95-.31-1.64-.6-2.88-1.24-4.76-4.13-4.9-4.32-.14-.19-1.17-1.55-1.17-2.96 0-1.4.73-2.09 1-2.38.26-.28.57-.35.76-.35h.55c.18 0 .42-.07.65.5.24.58.82 2 .89 2.15.07.14.11.31.02.5-.09.18-.14.29-.27.45-.14.16-.29.36-.41.48-.14.14-.28.29-.12.57.16.28.72 1.19 1.55 1.93 1.06.95 1.96 1.24 2.24 1.38.28.14.44.12.6-.07.16-.19.68-.79.87-1.06.18-.28.36-.23.6-.14.24.09 1.53.72 1.79.85.26.13.43.19.5.3.06.11.06.63-.18 1.3z"/></svg>
+      <span>WhatsApp</span>
+    </a>
+    <button class="menu-toggle" id="menuToggle">☰</button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <span class="eyebrow">Film Stretch Profesional</span>
+      <h1>Film stretch <em>negro y transparente</em> en todas las medidas</h1>
+      <p>En PackPro te ayudamos a proteger y paletizar tu mercadería con film stretch de calidad industrial. Consultanos stock, precios y despacho directo por WhatsApp.</p>
+      <div class="hero-actions">
+        <a href="#" class="btn btn-primary wa-link" target="_blank" rel="noopener">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.29-1.39a9.9 9.9 0 0 0 4.75 1.21h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm5.8 14.13c-.24.68-1.4 1.32-1.93 1.4-.5.08-1.12.11-1.81-.11-.42-.13-.95-.31-1.64-.6-2.88-1.24-4.76-4.13-4.9-4.32-.14-.19-1.17-1.55-1.17-2.96 0-1.4.73-2.09 1-2.38.26-.28.57-.35.76-.35h.55c.18 0 .42-.07.65.5.24.58.82 2 .89 2.15.07.14.11.31.02.5-.09.18-.14.29-.27.45-.14.16-.29.36-.41.48-.14.14-.28.29-.12.57.16.28.72 1.19 1.55 1.93 1.06.95 1.96 1.24 2.24 1.38.28.14.44.12.6-.07.16-.19.68-.79.87-1.06.18-.28.36-.23.6-.14.24.09 1.53.72 1.79.85.26.13.43.19.5.3.06.11.06.63-.18 1.3z"/></svg>
+          Consultar por WhatsApp
+        </a>
+        <a href="#productos" class="btn btn-outline">Ver medidas disponibles</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="swatch black">
+        <div class="dot"></div>
+        <h4>Negro</h4>
+        <p>Máxima opacidad</p>
+      </div>
+      <div class="swatch clear">
+        <div class="dot"></div>
+        <h4>Transparente</h4>
+        <p>Visibilidad total</p>
+      </div>
+      <div class="stat-row">
+        <div class="stat"><b>+10</b><span>Medidas</span></div>
+        <div class="stat"><b>24-48h</b><span>Entrega</span></div>
+        <div class="stat"><b>100%</b><span>Calidad</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTOS -->
+<section class="section" id="productos">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Catálogo</span>
+      <h2>Medidas disponibles</h2>
+      <p>Film stretch manual e industrial, en negro y transparente. Estas son medidas de referencia — consultanos stock actualizado por WhatsApp.</p>
+    </div>
+
+    <div class="products-grid">
+
+      <div class="product-card">
+        <div class="product-media clear"><div class="roll"></div><span class="tag">Transparente</span></div>
+        <div class="product-body">
+          <h3>Film Manual 50cm</h3>
+          <ul>
+            <li><span>Ancho</span><span>50 cm</span></li>
+            <li><span>Largo</span><span>300 m</span></li>
+            <li><span>Uso</span><span>Manual</span></li>
+          </ul>
+          <a href="#" class="wa-link product-consult">Consultar precio →</a>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-media black"><div class="roll"></div><span class="tag">Negro</span></div>
+        <div class="product-body">
+          <h3>Film Manual 50cm</h3>
+          <ul>
+            <li><span>Ancho</span><span>50 cm</span></li>
+            <li><span>Largo</span><span>300 m</span></li>
+            <li><span>Uso</span><span>Manual</span></li>
+          </ul>
+          <a href="#" class="wa-link product-consult">Consultar precio →</a>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-media clear"><div class="roll"></div><span class="tag">Transparente</span></div>
+        <div class="product-body">
+          <h3>Film Manual 45cm</h3>
+          <ul>
+            <li><span>Ancho</span><span>45 cm</span></li>
+            <li><span>Largo</span><span>250 m</span></li>
+            <li><span>Uso</span><span>Manual</span></li>
+          </ul>
+          <a href="#" class="wa-link product-consult">Consultar precio →</a>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-media black"><div class="roll"></div><span class="tag">Negro</span></div>
+        <div class="product-body">
+          <h3>Film Industrial 50cm</h3>
+          <ul>
+            <li><span>Ancho</span><span>50 cm</span></li>
+            <li><span>Largo</span><span>1000 m</span></li>
+            <li><span>Uso</span><span>Máquina</span></li>
+          </ul>
+          <a href="#" class="wa-link product-consult">Consultar precio →</a>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-media clear"><div class="roll"></div><span class="tag">Transparente</span></div>
+        <div class="product-body">
+          <h3>Film Industrial 50cm</h3>
+          <ul>
+            <li><span>Ancho</span><span>50 cm</span></li>
+            <li><span>Largo</span><span>1000 m</span></li>
+            <li><span>Uso</span><span>Máquina</span></li>
+          </ul>
+          <a href="#" class="wa-link product-consult">Consultar precio →</a>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-media black"><div class="roll"></div><span class="tag">Negro</span></div>
+        <div class="product-body">
+          <h3>Film Manual 45cm</h3>
+          <ul>
+            <li><span>Ancho</span><span>45 cm</span></li>
+            <li><span>Largo</span><span>250 m</span></li>
+            <li><span>Uso</span><span>Manual</span></li>
+          </ul>
+          <a href="#" class="wa-link product-consult">Consultar precio →</a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="note-box">
+      Medidas de ejemplo para completar más adelante con tu catálogo real (anchos, largos, micronaje y precios).
+    </div>
+  </div>
+</section>
+
+<!-- POR QUE ELEGIRNOS -->
+<section class="section section-alt" id="nosotros">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">PackPro</span>
+      <h2>Por qué elegirnos</h2>
+      <p>Trabajamos para que embalar tu mercadería sea simple, rápido y seguro.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon">✓</div>
+        <h3>Calidad garantizada</h3>
+        <p>Film de alta resistencia y elongación para una sujeción segura.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">↔</div>
+        <h3>Variedad de medidas</h3>
+        <p>Rollos manuales e industriales, en negro y transparente.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">⚡</div>
+        <h3>Entrega rápida</h3>
+        <p>Coordinamos despacho o retiro en poco tiempo.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">$</div>
+        <h3>Precios por volumen</h3>
+        <p>Descuentos especiales para compras mayoristas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section">
+  <div class="container">
+    <div class="cta-strip">
+      <div>
+        <h2>¿Necesitás film stretch para tu empresa?</h2>
+        <p>Escribinos ahora y te respondemos al toque con stock y precios.</p>
+      </div>
+      <a href="#" class="btn btn-primary wa-link" target="_blank" rel="noopener">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.29-1.39a9.9 9.9 0 0 0 4.75 1.21h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm5.8 14.13c-.24.68-1.4 1.32-1.93 1.4-.5.08-1.12.11-1.81-.11-.42-.13-.95-.31-1.64-.6-2.88-1.24-4.76-4.13-4.9-4.32-.14-.19-1.17-1.55-1.17-2.96 0-1.4.73-2.09 1-2.38.26-.28.57-.35.76-.35h.55c.18 0 .42-.07.65.5.24.58.82 2 .89 2.15.07.14.11.31.02.5-.09.18-.14.29-.27.45-.14.16-.29.36-.41.48-.14.14-.28.29-.12.57.16.28.72 1.19 1.55 1.93 1.06.95 1.96 1.24 2.24 1.38.28.14.44.12.6-.07.16-.19.68-.79.87-1.06.18-.28.36-.23.6-.14.24.09 1.53.72 1.79.85.26.13.43.19.5.3.06.11.06.63-.18 1.3z"/></svg>
+        Escribir por WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section class="section" id="contacto">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Contacto</span>
+      <h2>Hablemos por WhatsApp</h2>
+      <p>Es la forma más rápida de consultar stock, medidas y precios.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <h3>Contactanos directo</h3>
+        <p>Tocá el botón y te respondemos a la brevedad. Contanos qué medida y cantidad necesitás.</p>
+        <a href="#" class="btn btn-primary wa-link" target="_blank" rel="noopener" style="width:100%;justify-content:center;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.29-1.39a9.9 9.9 0 0 0 4.75 1.21h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm5.8 14.13c-.24.68-1.4 1.32-1.93 1.4-.5.08-1.12.11-1.81-.11-.42-.13-.95-.31-1.64-.6-2.88-1.24-4.76-4.13-4.9-4.32-.14-.19-1.17-1.55-1.17-2.96 0-1.4.73-2.09 1-2.38.26-.28.57-.35.76-.35h.55c.18 0 .42-.07.65.5.24.58.82 2 .89 2.15.07.14.11.31.02.5-.09.18-.14.29-.27.45-.14.16-.29.36-.41.48-.14.14-.28.29-.12.57.16.28.72 1.19 1.55 1.93 1.06.95 1.96 1.24 2.24 1.38.28.14.44.12.6-.07.16-.19.68-.79.87-1.06.18-.28.36-.23.6-.14.24.09 1.53.72 1.79.85.26.13.43.19.5.3.06.11.06.63-.18 1.3z"/></svg>
+          Enviar mensaje
+        </a>
+      </div>
+      <div class="contact-card">
+        <div class="info-row">
+          <div class="ic">☎</div>
+          <div>
+            <b>WhatsApp</b>
+            <span id="phone-display">+56 9 5850 1731</span>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="ic">🕒</div>
+          <div>
+            <b>Horario de atención</b>
+            <span>Lunes a viernes, 9:00 a 18:00 hs</span>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="ic">📦</div>
+          <div>
+            <b>Despacho</b>
+            <span>Consultá zonas y costos de envío</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    &copy; <span id="year"></span> PackPro — Film Stretch. Todos los derechos reservados.
+  </div>
+</footer>
+
+<!-- BOTON FLOTANTE WHATSAPP -->
+<a href="#" class="wa-float wa-link" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.29-1.39a9.9 9.9 0 0 0 4.75 1.21h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm5.8 14.13c-.24.68-1.4 1.32-1.93 1.4-.5.08-1.12.11-1.81-.11-.42-.13-.95-.31-1.64-.6-2.88-1.24-4.76-4.13-4.9-4.32-.14-.19-1.17-1.55-1.17-2.96 0-1.4.73-2.09 1-2.38.26-.28.57-.35.76-.35h.55c.18 0 .42-.07.65.5.24.58.82 2 .89 2.15.07.14.11.31.02.5-.09.18-.14.29-.27.45-.14.16-.29.36-.41.48-.14.14-.28.29-.12.57.16.28.72 1.19 1.55 1.93 1.06.95 1.96 1.24 2.24 1.38.28.14.44.12.6-.07.16-.19.68-.79.87-1.06.18-.28.36-.23.6-.14.24.09 1.53.72 1.79.85.26.13.43.19.5.3.06.11.06.63-.18 1.3z"/></svg>
+</a>
+
+<script>
+  // Numero de WhatsApp (formato internacional, sin +, espacios ni guiones)
+  const WHATSAPP_NUMBER = "56985501731";
+  const WHATSAPP_MESSAGE = "Hola! Quiero consultar por film stretch (medidas y precios).";
+  const waUrl = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(WHATSAPP_MESSAGE);
+
+  document.querySelectorAll(".wa-link").forEach(el => el.setAttribute("href", waUrl));
+  document.getElementById("wa-nav").setAttribute("href", waUrl);
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  // Menu movil simple
+  const toggle = document.getElementById("menuToggle");
+  const links = document.querySelector(".nav-links");
+  toggle.addEventListener("click", () => {
+    links.style.display = links.style.display === "flex" ? "none" : "flex";
+    links.style.flexDirection = "column";
+    links.style.position = "absolute";
+    links.style.top = "64px";
+    links.style.right = "20px";
+    links.style.background = "#ffffff";
+    links.style.border = "1px solid #e3e8ee";
+    links.style.boxShadow = "0 12px 28px -14px rgba(18,21,28,0.2)";
+    links.style.borderRadius = "10px";
+    links.style.padding = "16px 24px";
+    links.style.gap = "14px";
+  });
+</script>
+
+</body>
+</html>
