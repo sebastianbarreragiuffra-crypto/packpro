@@ -431,12 +431,14 @@
     display:flex;align-items:center;justify-content:center;
     padding:30px;min-height:280px;
   }
-  .product-modal-media .tag-media{height:auto;width:100%;max-width:220px;margin:0 auto;aspect-ratio:1/1;border-bottom:none;cursor:default;}
+  .product-modal-media .tag-media{height:auto;width:100%;max-width:320px;margin:0 auto;aspect-ratio:1/1;border-bottom:none;cursor:default;}
   .product-modal-media .tag-media img{padding:0;}
   .product-modal-media .roll-core{width:120px;height:120px;}
   .product-modal-media .roll-tube{width:28px;height:28px;}
   .product-modal-info{padding:28px 30px;}
-  .product-modal-info h3{font-family:var(--font-display);text-transform:uppercase;font-size:1.5rem;letter-spacing:0.2px;margin-bottom:16px;}
+  .product-modal-info h3{font-family:var(--font-display);text-transform:uppercase;font-size:1.5rem;letter-spacing:0.2px;margin-bottom:10px;}
+  .modal-subhead{display:flex;align-items:center;gap:8px;font-family:var(--font-mono);font-weight:600;font-size:0.72rem;letter-spacing:1.2px;text-transform:uppercase;color:var(--accent-deep);margin-bottom:14px;}
+  .modal-subhead::before{content:"";width:7px;height:7px;background:var(--accent-deep);flex-shrink:0;}
   .modal-spec-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:24px;}
   .modal-spec-item{border:1px solid var(--line);padding:8px 10px;}
   .modal-spec-item dt{font-family:var(--font-mono);font-size:0.62rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:4px;}
@@ -482,9 +484,10 @@
     .product-modal-close{width:28px;height:28px;font-size:1.05rem;}
     .product-modal-body{grid-template-columns:1fr;}
     .product-modal-media{border-right:none;border-bottom:1px solid var(--line);padding:10px;min-height:0;}
-    .product-modal-media .tag-media{max-width:120px;}
+    .product-modal-media .tag-media{max-width:190px;}
     .product-modal-info{padding:14px 16px;}
-    .product-modal-info h3{font-size:1.02rem;margin-bottom:10px;}
+    .product-modal-info h3{font-size:1.02rem;margin-bottom:8px;}
+    .modal-subhead{font-size:0.6rem;margin-bottom:10px;}
     .modal-spec-grid{grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:14px;}
     .modal-spec-item{padding:6px 5px;}
     .modal-spec-item dt{font-size:0.52rem;margin-bottom:2px;}
@@ -869,6 +872,7 @@
       <div class="product-modal-media" id="modalMediaWrap"></div>
       <div class="product-modal-info">
         <h3 id="modalTitle"></h3>
+        <span class="modal-subhead">Datos Generales</span>
         <dl class="modal-spec-grid" id="modalSpecs"></dl>
         <div class="modal-features">
           <div class="modal-feature-item">
