@@ -218,6 +218,7 @@
   }
   .tag-media.black{background:#141310;}
   .tag-media.clear{background:linear-gradient(135deg,#f4f2ea,#dbd7c9);}
+  .tag-media.photo img{width:100%;height:100%;object-fit:contain;padding:16px;}
   .roll-core{width:84px;height:84px;border-radius:50%;display:flex;align-items:center;justify-content:center;}
   .tag-media.black .roll-core{background:repeating-radial-gradient(circle, #050504 0 3px, #26231c 3px 7px);}
   .tag-media.clear .roll-core{background:repeating-radial-gradient(circle, rgba(23,22,15,0.18) 0 3px, rgba(23,22,15,0.05) 3px 7px);}
@@ -301,7 +302,7 @@
   .cta-copy{flex:1;min-width:260px;}
   .cta-strip h2{font-size:clamp(1.5rem,1.2rem+1.4vw,2rem);margin-bottom:8px;line-height:1;}
   .cta-strip p{font-family:var(--font-body);color:rgba(255,255,255,0.82);margin-bottom:20px;}
-  .cta-media{width:220px;flex-shrink:0;}
+  .cta-media{width:320px;flex-shrink:0;}
   .cta-media img{width:100%;display:block;border-radius:2px;box-shadow:0 16px 34px -12px rgba(0,0,0,0.45);}
 
   /* CONTACT — PACKING SLIP */
@@ -371,6 +372,20 @@
   .wa-float:hover{transform:scale(1.08);}
   .wa-float svg{width:28px;height:28px;}
 
+  /* FLOATING SCROLL-TO-TOP BUTTON (MOBILE ONLY) */
+  .scroll-top-float{
+    display:none;
+    position:fixed;bottom:94px;right:24px;
+    background:var(--paper);color:var(--accent-deep);
+    width:44px;height:44px;border-radius:50%;
+    align-items:center;justify-content:center;
+    border:1px solid var(--line);
+    box-shadow:0 8px 20px -6px rgba(17,21,28,0.35);
+    z-index:200;transition:transform .2s;
+  }
+  .scroll-top-float:hover{transform:scale(1.08);}
+  .scroll-top-float svg{width:20px;height:20px;}
+
   @media (max-width: 900px){
     .hero-grid{grid-template-columns:1fr;}
     .products-grid{grid-template-columns:repeat(2,1fr);}
@@ -380,6 +395,7 @@
     .contact-grid{grid-template-columns:1fr;}
   }
   @media (max-width: 640px){
+    .scroll-top-float{display:flex;}
     .nav-links{display:none;}
     .nav-links.open{
       display:flex;flex-direction:column;position:absolute;
@@ -398,7 +414,7 @@
     .plate-item{border-left:none;border-top:1px solid var(--line);}
     .plate-item:first-child{border-top:none;}
     .cta-strip{flex-direction:column;text-align:center;}
-    .cta-media{width:60%;max-width:220px;}
+    .cta-media{width:85%;max-width:320px;}
     .nav-cta{width:40px;height:40px;padding:0;gap:0;justify-content:center;flex-shrink:0;border-radius:var(--radius);}
     .nav-cta span{display:none;}
     .stretch-track{margin:0 4px 16px;}
@@ -428,7 +444,7 @@
 </header>
 
 <!-- HERO -->
-<section class="hero">
+<section class="hero" id="inicio">
   <div class="container hero-grid">
     <div>
       <span class="hero-tag">Film Stretch Industrial</span>
@@ -471,7 +487,7 @@
 
       <div class="tag-card reveal">
         <div class="tag-punch"></div>
-        <div class="tag-media clear"><div class="roll-core"><span class="roll-tube"></span></div><span class="tag-swatch-label">Transparente</span></div>
+        <div class="tag-media clear photo"><img src="assets/product-transparente.png" alt="Rollos de film stretch transparente"><span class="tag-swatch-label">Transparente</span></div>
         <div class="tag-body">
           <h3>Film transparente</h3>
           <dl class="spec">
@@ -485,7 +501,7 @@
 
       <div class="tag-card reveal">
         <div class="tag-punch"></div>
-        <div class="tag-media black"><div class="roll-core"><span class="roll-tube"></span></div><span class="tag-swatch-label">Negro</span></div>
+        <div class="tag-media black photo"><img src="assets/product-negro.png" alt="Rollos de film stretch negro"><span class="tag-swatch-label">Negro</span></div>
         <div class="tag-body">
           <h3>Film negro</h3>
           <dl class="spec">
@@ -747,6 +763,11 @@
 <!-- BOTON FLOTANTE WHATSAPP -->
 <a href="#" class="wa-float wa-link" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
   <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.29-1.39a9.9 9.9 0 0 0 4.75 1.21h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm5.8 14.13c-.24.68-1.4 1.32-1.93 1.4-.5.08-1.12.11-1.81-.11-.42-.13-.95-.31-1.64-.6-2.88-1.24-4.76-4.13-4.9-4.32-.14-.19-1.17-1.55-1.17-2.96 0-1.4.73-2.09 1-2.38.26-.28.57-.35.76-.35h.55c.18 0 .42-.07.65.5.24.58.82 2 .89 2.15.07.14.11.31.02.5-.09.18-.14.29-.27.45-.14.16-.29.36-.41.48-.14.14-.28.29-.12.57.16.28.72 1.19 1.55 1.93 1.06.95 1.96 1.24 2.24 1.38.28.14.44.12.6-.07.16-.19.68-.79.87-1.06.18-.28.36-.23.6-.14.24.09 1.53.72 1.79.85.26.13.43.19.5.3.06.11.06.63-.18 1.3z"/></svg>
+</a>
+
+<!-- BOTON FLOTANTE VOLVER AL INICIO (SOLO MOBILE) -->
+<a href="#inicio" class="scroll-top-float" aria-label="Volver al inicio">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"/><path d="M6 11l6-6 6 6"/></svg>
 </a>
 
 <script>
