@@ -311,6 +311,31 @@
   .info-row b{display:block;font-size:0.92rem;font-family:var(--font-mono);letter-spacing:0.4px;text-transform:uppercase;}
   .info-row span{color:var(--muted);font-size:0.9rem;}
 
+  .field{margin-bottom:16px;}
+  .field-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .field label{
+    display:block;font-family:var(--font-mono);font-size:0.7rem;letter-spacing:0.6px;
+    text-transform:uppercase;color:var(--muted);margin-bottom:6px;
+  }
+  .field input,.field textarea{
+    width:100%;border:1px solid var(--line);background:var(--bg);
+    padding:10px 12px;font-family:var(--font-body);font-size:0.92rem;color:var(--ink);
+    border-radius:2px;transition:border-color .2s;
+  }
+  .field input:focus,.field textarea:focus{border-color:var(--accent-deep);}
+  .field textarea{resize:vertical;min-height:92px;}
+
+  .slip-actions{display:flex;gap:10px;margin-top:22px;flex-wrap:wrap;}
+  .slip-actions .btn{flex:1;justify-content:center;}
+
+  .map-frame{border:1px solid var(--line);margin-top:22px;overflow:hidden;}
+  .map-frame iframe{display:block;width:100%;height:200px;}
+  .map-link{
+    display:inline-block;margin-top:10px;font-family:var(--font-mono);
+    font-size:0.76rem;font-weight:600;color:var(--accent-deep);
+  }
+  .map-link:hover{text-decoration:underline;}
+
   /* FOOTER */
   footer{
     padding:28px 0;background:var(--bg-deep);color:var(--muted);
@@ -356,6 +381,7 @@
     .nav-cta span{display:none;}
     .stretch-track{margin:0 4px 16px;}
     .stretch-range{width:calc(100% - 8px);margin:0 4px;}
+    .field-row{grid-template-columns:1fr;}
   }
 </style>
 </head>
@@ -605,32 +631,63 @@
     <div class="section-head reveal">
       <span class="eyebrow-tag">Panel 04 — Hoja de despacho</span>
       <h2>Hablemos por WhatsApp</h2>
-      <p>Es la forma más rápida de consultar stock, medidas y precios.</p>
+      <p>Completá el formulario o escribinos directo — te respondemos con stock, medidas y precios.</p>
     </div>
     <div class="contact-grid">
       <div class="slip reveal">
-        <div class="slip-label mono">Contacto directo</div>
-        <h3>Contactanos directo</h3>
-        <p>Tocá el botón y te respondemos a la brevedad. Contanos qué medida y cantidad necesitás.</p>
-        <a href="#" class="btn btn-primary wa-link" target="_blank" rel="noopener" style="width:100%;justify-content:center;">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.29-1.39a9.9 9.9 0 0 0 4.75 1.21h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm5.8 14.13c-.24.68-1.4 1.32-1.93 1.4-.5.08-1.12.11-1.81-.11-.42-.13-.95-.31-1.64-.6-2.88-1.24-4.76-4.13-4.9-4.32-.14-.19-1.17-1.55-1.17-2.96 0-1.4.73-2.09 1-2.38.26-.28.57-.35.76-.35h.55c.18 0 .42-.07.65.5.24.58.82 2 .89 2.15.07.14.11.31.02.5-.09.18-.14.29-.27.45-.14.16-.29.36-.41.48-.14.14-.28.29-.12.57.16.28.72 1.19 1.55 1.93 1.06.95 1.96 1.24 2.24 1.38.28.14.44.12.6-.07.16-.19.68-.79.87-1.06.18-.28.36-.23.6-.14.24.09 1.53.72 1.79.85.26.13.43.19.5.3.06.11.06.63-.18 1.3z"/></svg>
-          Enviar mensaje
-        </a>
+        <div class="slip-label mono">Formulario de cotización</div>
+        <form id="quoteForm">
+          <div class="field-row">
+            <div class="field">
+              <label for="qNombre">Nombre</label>
+              <input type="text" id="qNombre" name="nombre" placeholder="Tu nombre" required>
+            </div>
+            <div class="field">
+              <label for="qEmpresa">Empresa</label>
+              <input type="text" id="qEmpresa" name="empresa" placeholder="Empresa (opcional)">
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="qEmail">Email</label>
+              <input type="email" id="qEmail" name="email" placeholder="correo@dominio.com">
+            </div>
+            <div class="field">
+              <label for="qTelefono">Teléfono</label>
+              <input type="tel" id="qTelefono" name="telefono" placeholder="+56 9...">
+            </div>
+          </div>
+          <div class="field">
+            <label for="qMensaje">Mensaje</label>
+            <textarea id="qMensaje" name="mensaje" placeholder="Medida y tipo de film, cantidad de rollos, ciudad de despacho..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.29-1.39a9.9 9.9 0 0 0 4.75 1.21h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm5.8 14.13c-.24.68-1.4 1.32-1.93 1.4-.5.08-1.12.11-1.81-.11-.42-.13-.95-.31-1.64-.6-2.88-1.24-4.76-4.13-4.9-4.32-.14-.19-1.17-1.55-1.17-2.96 0-1.4.73-2.09 1-2.38.26-.28.57-.35.76-.35h.55c.18 0 .42-.07.65.5.24.58.82 2 .89 2.15.07.14.11.31.02.5-.09.18-.14.29-.27.45-.14.16-.29.36-.41.48-.14.14-.28.29-.12.57.16.28.72 1.19 1.55 1.93 1.06.95 1.96 1.24 2.24 1.38.28.14.44.12.6-.07.16-.19.68-.79.87-1.06.18-.28.36-.23.6-.14.24.09 1.53.72 1.79.85.26.13.43.19.5.3.06.11.06.63-.18 1.3z"/></svg>
+            Enviar por WhatsApp
+          </button>
+        </form>
       </div>
       <div class="slip reveal">
-        <div class="slip-label mono">Datos de contacto</div>
+        <div class="slip-label mono">Datos directos</div>
+        <div class="info-row">
+          <div class="ic">Hr</div>
+          <div>
+            <b>Horario</b>
+            <span>Lun–Vie 09:00–18:00</span>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="ic">Dr</div>
+          <div>
+            <b>Dirección</b>
+            <span>Camino El Alba 2, Parcela 39, Lote 18, Colina</span>
+          </div>
+        </div>
         <div class="info-row">
           <div class="ic">@</div>
           <div>
             <b>WhatsApp</b>
             <span id="phone-display">+56 9 5850 1731</span>
-          </div>
-        </div>
-        <div class="info-row">
-          <div class="ic">Hr</div>
-          <div>
-            <b>Horario de atención</b>
-            <span>Lunes a viernes, 9:00 a 18:00 hs</span>
           </div>
         </div>
         <div class="info-row">
@@ -640,6 +697,14 @@
             <span>Consultá zonas y costos de envío</span>
           </div>
         </div>
+        <div class="slip-actions">
+          <a href="#" class="btn btn-primary wa-link" target="_blank" rel="noopener">Hablar por WhatsApp</a>
+          <a href="#productos" class="btn btn-outline">Ver productos</a>
+        </div>
+        <div class="map-frame">
+          <iframe src="https://www.google.com/maps?q=Camino+El+Alba+2,+Parcela+39,+Lote+18,+Colina,+Chile&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Ubicación PackPro"></iframe>
+        </div>
+        <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Camino+El+Alba+2,+Parcela+39,+Lote+18,+Colina,+Chile" target="_blank" rel="noopener">Abrir en Google Maps ↗</a>
       </div>
     </div>
   </div>
@@ -713,6 +778,26 @@
   }
   range.addEventListener("input", updateStretch);
   updateStretch();
+
+  // Formulario de cotización -> mensaje de WhatsApp
+  const quoteForm = document.getElementById("quoteForm");
+  quoteForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const nombre = document.getElementById("qNombre").value.trim();
+    const empresa = document.getElementById("qEmpresa").value.trim();
+    const email = document.getElementById("qEmail").value.trim();
+    const telefono = document.getElementById("qTelefono").value.trim();
+    const mensaje = document.getElementById("qMensaje").value.trim();
+
+    let lines = ["Hola! Quiero cotizar film stretch.", "Nombre: " + nombre];
+    if(empresa) lines.push("Empresa: " + empresa);
+    if(email) lines.push("Email: " + email);
+    if(telefono) lines.push("Teléfono: " + telefono);
+    if(mensaje) lines.push("Detalle: " + mensaje);
+
+    const quoteUrl = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(lines.join("\n"));
+    window.open(quoteUrl, "_blank", "noopener");
+  });
 </script>
 
 </body>
