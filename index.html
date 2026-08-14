@@ -204,6 +204,7 @@
     background:var(--paper);
     border:1px solid var(--line);
     position:relative;
+    cursor:pointer;
     transition:transform .2s, border-color .2s, box-shadow .2s;
   }
   .tag-card:hover{transform:translateY(-4px);border-color:var(--accent-deep);box-shadow:0 16px 30px -18px rgba(23,22,15,0.35);}
@@ -213,12 +214,13 @@
     background:var(--bg);box-shadow:0 0 0 1px var(--line);z-index:2;
   }
   .tag-media{
-    height:160px;display:flex;align-items:center;justify-content:center;position:relative;
-    border-bottom:1px dashed var(--line);
+    height:240px;display:flex;align-items:center;justify-content:center;position:relative;
+    border-bottom:1px dashed var(--line);cursor:pointer;
   }
   .tag-media.black{background:#141310;}
   .tag-media.clear{background:linear-gradient(135deg,#f4f2ea,#dbd7c9);}
-  .tag-media.photo img{width:100%;height:100%;object-fit:contain;padding:16px;}
+  .tag-media.photo{background:var(--paper);}
+  .tag-media.photo img{width:100%;height:100%;object-fit:contain;padding:6px;}
   .roll-core{width:84px;height:84px;border-radius:50%;display:flex;align-items:center;justify-content:center;}
   .tag-media.black .roll-core{background:repeating-radial-gradient(circle, #050504 0 3px, #26231c 3px 7px);}
   .tag-media.clear .roll-core{background:repeating-radial-gradient(circle, rgba(23,22,15,0.18) 0 3px, rgba(23,22,15,0.05) 3px 7px);}
@@ -386,6 +388,54 @@
   .scroll-top-float:hover{transform:scale(1.08);}
   .scroll-top-float svg{width:20px;height:20px;}
 
+  /* PRODUCT MODAL */
+  .product-modal{
+    position:fixed;inset:0;z-index:300;
+    display:flex;align-items:center;justify-content:center;padding:20px;
+    opacity:0;visibility:hidden;
+    transition:opacity .2s ease, visibility 0s linear .2s;
+  }
+  .product-modal.open{opacity:1;visibility:visible;transition:opacity .2s ease;}
+  .product-modal-backdrop{position:absolute;inset:0;background:rgba(17,21,28,0.62);}
+  .product-modal-panel{
+    position:relative;background:var(--paper);border:1px solid var(--line);
+    width:100%;max-width:860px;max-height:88vh;overflow-y:auto;
+    box-shadow:0 30px 60px -20px rgba(17,21,28,0.5);
+    transform:translateY(14px) scale(0.98);
+    transition:transform .25s ease;
+  }
+  .product-modal.open .product-modal-panel{transform:translateY(0) scale(1);}
+  .product-modal-head{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:16px 20px;border-bottom:1px solid var(--line);
+    position:sticky;top:0;background:var(--paper);z-index:2;
+  }
+  .modal-eyebrow{font-size:0.72rem;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:var(--accent-deep);}
+  .product-modal-close{
+    width:36px;height:36px;border:1px solid var(--line);background:none;
+    display:flex;align-items:center;justify-content:center;cursor:pointer;
+    font-size:1.3rem;color:var(--ink);flex-shrink:0;line-height:1;
+  }
+  .product-modal-close:hover{border-color:var(--accent-deep);color:var(--accent-deep);}
+  .product-modal-body{display:grid;grid-template-columns:1fr 1fr;}
+  .product-modal-media{
+    background:var(--paper);border-right:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center;
+    padding:30px;min-height:280px;
+  }
+  .product-modal-media .tag-media{height:auto;width:100%;aspect-ratio:1/1;border-bottom:none;cursor:default;}
+  .product-modal-media .tag-media img{padding:0;}
+  .product-modal-media .roll-core{width:120px;height:120px;}
+  .product-modal-media .roll-tube{width:28px;height:28px;}
+  .product-modal-info{padding:28px 30px;}
+  .product-modal-info h3{font-family:var(--font-display);text-transform:uppercase;font-size:1.5rem;letter-spacing:0.2px;margin-bottom:16px;}
+  .modal-spec-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:24px;}
+  .modal-spec-item{border:1px solid var(--line);padding:12px 14px;}
+  .modal-spec-item dt{font-family:var(--font-mono);font-size:0.68rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:4px;}
+  .modal-spec-item dd{font-weight:700;font-size:0.98rem;}
+  .modal-actions{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px;}
+  .modal-note{color:var(--muted);font-size:0.8rem;}
+
   @media (max-width: 900px){
     .hero-grid{grid-template-columns:1fr;}
     .products-grid{grid-template-columns:repeat(2,1fr);}
@@ -410,6 +460,9 @@
     .menu-toggle{display:flex;}
     .products-grid{grid-template-columns:1fr;}
     .quick-faq-grid{grid-template-columns:1fr;}
+    .product-modal-body{grid-template-columns:1fr;}
+    .product-modal-media{border-right:none;border-bottom:1px solid var(--line);padding:20px;min-height:220px;}
+    .modal-spec-grid{grid-template-columns:1fr 1fr;}
     .plate{grid-template-columns:1fr;}
     .plate-item{border-left:none;border-top:1px solid var(--line);}
     .plate-item:first-child{border-top:none;}
@@ -770,6 +823,32 @@
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"/><path d="M6 11l6-6 6 6"/></svg>
 </a>
 
+<!-- MODAL FICHA DE PRODUCTO -->
+<div class="product-modal" id="productModal" aria-hidden="true">
+  <div class="product-modal-backdrop" id="productModalBackdrop"></div>
+  <div class="product-modal-panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="product-modal-head">
+      <span class="modal-eyebrow mono">Ficha técnica</span>
+      <button type="button" class="product-modal-close" id="productModalClose" aria-label="Cerrar">×</button>
+    </div>
+    <div class="product-modal-body">
+      <div class="product-modal-media" id="modalMediaWrap"></div>
+      <div class="product-modal-info">
+        <h3 id="modalTitle"></h3>
+        <dl class="modal-spec-grid" id="modalSpecs"></dl>
+        <div class="modal-actions">
+          <a href="#" class="btn btn-primary wa-link" id="modalWaBtn" target="_blank" rel="noopener">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.29-1.39a9.9 9.9 0 0 0 4.75 1.21h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm5.8 14.13c-.24.68-1.4 1.32-1.93 1.4-.5.08-1.12.11-1.81-.11-.42-.13-.95-.31-1.64-.6-2.88-1.24-4.76-4.13-4.9-4.32-.14-.19-1.17-1.55-1.17-2.96 0-1.4.73-2.09 1-2.38.26-.28.57-.35.76-.35h.55c.18 0 .42-.07.65.5.24.58.82 2 .89 2.15.07.14.11.31.02.5-.09.18-.14.29-.27.45-.14.16-.29.36-.41.48-.14.14-.28.29-.12.57.16.28.72 1.19 1.55 1.93 1.06.95 1.96 1.24 2.24 1.38.28.14.44.12.6-.07.16-.19.68-.79.87-1.06.18-.28.36-.23.6-.14.24.09 1.53.72 1.79.85.26.13.43.19.5.3.06.11.06.63-.18 1.3z"/></svg>
+            WhatsApp
+          </a>
+          <a href="#contacto" class="btn btn-outline" id="modalQuoteBtn">Cotizar</a>
+        </div>
+        <p class="modal-note mono">*Los valores finales dependen de stock disponible.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script>
   // Numero de WhatsApp (formato internacional, sin +, espacios ni guiones)
   const WHATSAPP_NUMBER = "56958501731";
@@ -846,6 +925,67 @@
 
     const quoteUrl = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(lines.join("\n"));
     window.open(quoteUrl, "_blank", "noopener");
+  });
+
+  // Ficha de producto (modal)
+  const productModal = document.getElementById("productModal");
+  const modalMediaWrap = document.getElementById("modalMediaWrap");
+  const modalTitle = document.getElementById("modalTitle");
+  const modalSpecs = document.getElementById("modalSpecs");
+  const modalWaBtn = document.getElementById("modalWaBtn");
+  let modalTrigger = null;
+
+  function openProductModal(card){
+    modalTrigger = card;
+    const title = card.querySelector("h3").textContent;
+    const media = card.querySelector(".tag-media");
+    const specRows = card.querySelectorAll(".spec > div");
+
+    modalTitle.textContent = title;
+
+    modalMediaWrap.innerHTML = "";
+    const mediaClone = media.cloneNode(true);
+    mediaClone.querySelector(".tag-swatch-label")?.remove();
+    modalMediaWrap.appendChild(mediaClone);
+
+    modalSpecs.innerHTML = "";
+    specRows.forEach(row => {
+      const label = row.querySelector("dt").textContent;
+      const value = row.querySelector("dd").textContent;
+      const item = document.createElement("div");
+      item.className = "modal-spec-item";
+      item.innerHTML = "<dt>" + label + "</dt><dd>" + value + "</dd>";
+      modalSpecs.appendChild(item);
+    });
+
+    const modalMsg = "Hola! Quiero consultar por " + title + " (medidas y precios).";
+    modalWaBtn.setAttribute("href", "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(modalMsg));
+
+    productModal.classList.add("open");
+    productModal.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+    document.getElementById("productModalClose").focus();
+  }
+
+  function closeProductModal(){
+    productModal.classList.remove("open");
+    productModal.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+    if(modalTrigger){ modalTrigger.focus({preventScroll:true}); }
+  }
+
+  document.querySelectorAll(".tag-card").forEach(card => {
+    card.addEventListener("click", (e) => {
+      if(e.target.closest(".tag-consult")) return;
+      openProductModal(card);
+    });
+  });
+
+  document.getElementById("productModalClose").addEventListener("click", closeProductModal);
+  document.getElementById("productModalBackdrop").addEventListener("click", closeProductModal);
+  document.getElementById("modalQuoteBtn").addEventListener("click", closeProductModal);
+  document.addEventListener("keydown", (e) => {
+    if(e.key === "Escape" && productModal.classList.contains("open")) closeProductModal();
   });
 </script>
 
