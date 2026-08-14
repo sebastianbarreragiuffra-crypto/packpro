@@ -5,7 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PackPro | Film Stretch</title>
 <meta name="description" content="PackPro - Venta de film stretch negro y transparente en distintas medidas. Consultá stock y precios por WhatsApp.">
+<meta property="og:title" content="PackPro | Film Stretch">
+<meta property="og:description" content="Film stretch negro y transparente en todas las medidas. Consultá stock y precios por WhatsApp.">
+<meta property="og:image" content="assets/logo.png">
+<meta property="og:type" content="website">
 <link rel="icon" type="image/png" href="assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg:#ffffff;
@@ -19,17 +26,27 @@
     --whatsapp:#25D366;
     --whatsapp-dark:#1ebe5b;
     --radius:14px;
+    --font-body:'Inter', 'Segoe UI', Roboto, Arial, sans-serif;
+    --font-head:'Plus Jakarta Sans', 'Segoe UI', Roboto, Arial, sans-serif;
+    --shadow-sm:0 12px 28px -18px rgba(18,21,28,0.14);
+    --shadow-md:0 20px 40px -20px rgba(18,21,28,0.16);
+    --shadow-lg:0 18px 34px -16px rgba(18,21,28,0.22);
   }
   *{box-sizing:border-box;margin:0;padding:0;}
   html{scroll-behavior:smooth;}
   body{
-    font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+    font-family:var(--font-body);
     background:var(--bg);
     color:var(--text);
     line-height:1.6;
   }
   img{max-width:100%;display:block;}
   a{text-decoration:none;color:inherit;}
+  h1,h2,h3,h4{font-family:var(--font-head);}
+  a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px;}
+  #productos,#nosotros,#contacto{scroll-margin-top:90px;}
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease, transform .6s ease;}
+  .reveal.is-visible{opacity:1;transform:translateY(0);}
   .container{
     width:100%;
     max-width:1140px;
@@ -107,9 +124,10 @@
     margin-bottom:14px;
   }
   .hero h1{
-    font-size:2.8rem;
+    font-size:clamp(2.1rem, 1.4rem + 3vw, 2.9rem);
     font-weight:800;
     line-height:1.15;
+    letter-spacing:-0.5px;
     margin-bottom:18px;
   }
   .hero h1 em{color:var(--accent);font-style:normal;}
@@ -150,7 +168,7 @@
     display:grid;
     grid-template-columns:1fr 1fr;
     gap:18px;
-    box-shadow:0 20px 40px -20px rgba(18,21,28,0.12);
+    box-shadow:var(--shadow-md);
   }
   .swatch{
     border-radius:10px;
@@ -189,7 +207,7 @@
     margin:0 auto 50px;
   }
   .section-head .eyebrow{display:block;}
-  .section-head h2{font-size:2.1rem;font-weight:800;margin-bottom:12px;}
+  .section-head h2{font-size:clamp(1.6rem, 1.2rem + 1.6vw, 2.1rem);font-weight:800;letter-spacing:-0.3px;margin-bottom:12px;}
   .section-head p{color:var(--text-muted);}
 
   .section-alt{background:var(--bg-alt);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
@@ -206,9 +224,9 @@
     border-radius:var(--radius);
     overflow:hidden;
     transition:transform .2s, border-color .2s, box-shadow .2s;
-    box-shadow:0 12px 28px -18px rgba(18,21,28,0.14);
+    box-shadow:var(--shadow-sm);
   }
-  .product-card:hover{transform:translateY(-4px);border-color:var(--accent);box-shadow:0 18px 34px -16px rgba(18,21,28,0.2);}
+  .product-card:hover{transform:translateY(-4px);border-color:var(--accent);box-shadow:var(--shadow-lg);}
   .product-media{
     height:150px;
     display:flex;
@@ -320,7 +338,7 @@
     border:1px solid var(--border);
     border-radius:var(--radius);
     padding:30px;
-    box-shadow:0 12px 28px -18px rgba(18,21,28,0.14);
+    box-shadow:var(--shadow-sm);
   }
   .contact-card h3{font-size:1.2rem;font-weight:700;margin-bottom:10px;}
   .contact-card p{color:var(--text-muted);margin-bottom:20px;font-size:0.95rem;}
@@ -378,8 +396,20 @@
   }
   @media (max-width: 640px){
     .nav-links{display:none;}
+    .nav-links.open{
+      display:flex;
+      flex-direction:column;
+      position:absolute;
+      top:64px;
+      right:20px;
+      background:var(--card);
+      border:1px solid var(--border);
+      box-shadow:var(--shadow-lg);
+      border-radius:10px;
+      padding:16px 24px;
+      gap:14px;
+    }
     .menu-toggle{display:block;}
-    .hero h1{font-size:2.1rem;}
     .products-grid{grid-template-columns:1fr;}
     .why-grid{grid-template-columns:1fr;}
     .cta-strip{flex-direction:column;text-align:center;}
@@ -402,7 +432,7 @@
       <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.29-1.39a9.9 9.9 0 0 0 4.75 1.21h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm5.8 14.13c-.24.68-1.4 1.32-1.93 1.4-.5.08-1.12.11-1.81-.11-.42-.13-.95-.31-1.64-.6-2.88-1.24-4.76-4.13-4.9-4.32-.14-.19-1.17-1.55-1.17-2.96 0-1.4.73-2.09 1-2.38.26-.28.57-.35.76-.35h.55c.18 0 .42-.07.65.5.24.58.82 2 .89 2.15.07.14.11.31.02.5-.09.18-.14.29-.27.45-.14.16-.29.36-.41.48-.14.14-.28.29-.12.57.16.28.72 1.19 1.55 1.93 1.06.95 1.96 1.24 2.24 1.38.28.14.44.12.6-.07.16-.19.68-.79.87-1.06.18-.28.36-.23.6-.14.24.09 1.53.72 1.79.85.26.13.43.19.5.3.06.11.06.63-.18 1.3z"/></svg>
       <span>WhatsApp</span>
     </a>
-    <button class="menu-toggle" id="menuToggle">☰</button>
+    <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-label="Abrir menú">☰</button>
   </div>
 </header>
 
@@ -444,7 +474,7 @@
 <!-- PRODUCTOS -->
 <section class="section" id="productos">
   <div class="container">
-    <div class="section-head">
+    <div class="section-head reveal">
       <span class="eyebrow">Catálogo</span>
       <h2>Medidas disponibles</h2>
       <p>Film stretch manual e industrial, en negro y transparente. Estas son medidas de referencia — consultanos stock actualizado por WhatsApp.</p>
@@ -452,7 +482,7 @@
 
     <div class="products-grid">
 
-      <div class="product-card">
+      <div class="product-card reveal">
         <div class="product-media clear"><div class="roll"></div><span class="tag">Transparente</span></div>
         <div class="product-body">
           <h3>Film Manual 50cm</h3>
@@ -465,7 +495,7 @@
         </div>
       </div>
 
-      <div class="product-card">
+      <div class="product-card reveal">
         <div class="product-media black"><div class="roll"></div><span class="tag">Negro</span></div>
         <div class="product-body">
           <h3>Film Manual 50cm</h3>
@@ -478,7 +508,7 @@
         </div>
       </div>
 
-      <div class="product-card">
+      <div class="product-card reveal">
         <div class="product-media clear"><div class="roll"></div><span class="tag">Transparente</span></div>
         <div class="product-body">
           <h3>Film Manual 45cm</h3>
@@ -491,7 +521,7 @@
         </div>
       </div>
 
-      <div class="product-card">
+      <div class="product-card reveal">
         <div class="product-media black"><div class="roll"></div><span class="tag">Negro</span></div>
         <div class="product-body">
           <h3>Film Industrial 50cm</h3>
@@ -504,7 +534,7 @@
         </div>
       </div>
 
-      <div class="product-card">
+      <div class="product-card reveal">
         <div class="product-media clear"><div class="roll"></div><span class="tag">Transparente</span></div>
         <div class="product-body">
           <h3>Film Industrial 50cm</h3>
@@ -517,7 +547,7 @@
         </div>
       </div>
 
-      <div class="product-card">
+      <div class="product-card reveal">
         <div class="product-media black"><div class="roll"></div><span class="tag">Negro</span></div>
         <div class="product-body">
           <h3>Film Manual 45cm</h3>
@@ -541,28 +571,28 @@
 <!-- POR QUE ELEGIRNOS -->
 <section class="section section-alt" id="nosotros">
   <div class="container">
-    <div class="section-head">
+    <div class="section-head reveal">
       <span class="eyebrow">PackPro</span>
       <h2>Por qué elegirnos</h2>
       <p>Trabajamos para que embalar tu mercadería sea simple, rápido y seguro.</p>
     </div>
     <div class="why-grid">
-      <div class="why-card">
+      <div class="why-card reveal">
         <div class="why-icon">✓</div>
         <h3>Calidad garantizada</h3>
         <p>Film de alta resistencia y elongación para una sujeción segura.</p>
       </div>
-      <div class="why-card">
+      <div class="why-card reveal">
         <div class="why-icon">↔</div>
         <h3>Variedad de medidas</h3>
         <p>Rollos manuales e industriales, en negro y transparente.</p>
       </div>
-      <div class="why-card">
+      <div class="why-card reveal">
         <div class="why-icon">⚡</div>
         <h3>Entrega rápida</h3>
         <p>Coordinamos despacho o retiro en poco tiempo.</p>
       </div>
-      <div class="why-card">
+      <div class="why-card reveal">
         <div class="why-icon">$</div>
         <h3>Precios por volumen</h3>
         <p>Descuentos especiales para compras mayoristas.</p>
@@ -574,7 +604,7 @@
 <!-- CTA -->
 <section class="section">
   <div class="container">
-    <div class="cta-strip">
+    <div class="cta-strip reveal">
       <div>
         <h2>¿Necesitás film stretch para tu empresa?</h2>
         <p>Escribinos ahora y te respondemos al toque con stock y precios.</p>
@@ -590,7 +620,7 @@
 <!-- CONTACTO -->
 <section class="section" id="contacto">
   <div class="container">
-    <div class="section-head">
+    <div class="section-head reveal">
       <span class="eyebrow">Contacto</span>
       <h2>Hablemos por WhatsApp</h2>
       <p>Es la forma más rápida de consultar stock, medidas y precios.</p>
@@ -652,22 +682,29 @@
   document.getElementById("wa-nav").setAttribute("href", waUrl);
   document.getElementById("year").textContent = new Date().getFullYear();
 
-  // Menu movil simple
+  // Menu movil
   const toggle = document.getElementById("menuToggle");
   const links = document.querySelector(".nav-links");
   toggle.addEventListener("click", () => {
-    links.style.display = links.style.display === "flex" ? "none" : "flex";
-    links.style.flexDirection = "column";
-    links.style.position = "absolute";
-    links.style.top = "64px";
-    links.style.right = "20px";
-    links.style.background = "#ffffff";
-    links.style.border = "1px solid #e3e8ee";
-    links.style.boxShadow = "0 12px 28px -14px rgba(18,21,28,0.2)";
-    links.style.borderRadius = "10px";
-    links.style.padding = "16px 24px";
-    links.style.gap = "14px";
+    const open = links.classList.toggle("open");
+    toggle.setAttribute("aria-expanded", open);
   });
+  links.querySelectorAll("a").forEach(a => a.addEventListener("click", () => {
+    links.classList.remove("open");
+    toggle.setAttribute("aria-expanded", "false");
+  }));
+
+  // Scroll reveal
+  const revealEls = document.querySelectorAll(".reveal");
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {threshold:0.15});
+  revealEls.forEach(el => observer.observe(el));
 </script>
 
 </body>
