@@ -557,7 +557,7 @@
             <div><dt>Largo</dt><dd>1613 m</dd></div>
             <div><dt>Espesor</dt><dd>20 micrones</dd></div>
           </dl>
-          <a href="#" class="wa-link tag-consult">Consultar precio →</a>
+          <a href="#" class="tag-consult">Descripción →</a>
         </div>
       </div>
 
@@ -571,7 +571,7 @@
             <div><dt>Largo</dt><dd>300 m</dd></div>
             <div><dt>Uso</dt><dd>Manual</dd></div>
           </dl>
-          <a href="#" class="wa-link tag-consult">Consultar precio →</a>
+          <a href="#" class="tag-consult">Descripción →</a>
         </div>
       </div>
 
@@ -585,7 +585,7 @@
             <div><dt>Largo</dt><dd>1000 m</dd></div>
             <div><dt>Uso</dt><dd>Máquina</dd></div>
           </dl>
-          <a href="#" class="wa-link tag-consult">Consultar precio →</a>
+          <a href="#" class="tag-consult">Descripción →</a>
         </div>
       </div>
 
@@ -985,7 +985,7 @@
 
   document.querySelectorAll(".tag-card").forEach(card => {
     card.addEventListener("click", (e) => {
-      if(e.target.closest(".tag-consult")) return;
+      if(e.target.closest(".tag-consult")) e.preventDefault();
       openProductModal(card);
     });
   });
