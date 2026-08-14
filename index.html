@@ -310,7 +310,7 @@
     background:var(--paper);border:1px solid var(--line);padding:30px;position:relative;
   }
   .slip-label{
-    font-family:var(--font-mono);font-size:0.7rem;letter-spacing:1.5px;color:var(--muted);
+    font-family:var(--font-body);font-weight:700;font-size:0.78rem;letter-spacing:0.6px;color:var(--muted);
     text-transform:uppercase;margin-bottom:16px;padding-bottom:12px;
     border-bottom:1px dashed var(--line);
   }
@@ -322,9 +322,9 @@
     width:36px;height:36px;flex-shrink:0;
     background:var(--bg-deep);border:1px solid var(--line);
     display:flex;align-items:center;justify-content:center;
-    font-family:var(--font-mono);font-weight:700;color:var(--accent-deep);
+    font-family:var(--font-body);font-weight:700;color:var(--accent-deep);
   }
-  .info-row b{display:block;font-size:0.92rem;font-family:var(--font-mono);letter-spacing:0.4px;text-transform:uppercase;}
+  .info-row b{display:block;font-size:0.92rem;font-family:var(--font-body);letter-spacing:0.2px;text-transform:none;}
   .info-row span{color:var(--muted);font-size:0.9rem;}
 
   .field{margin-bottom:16px;}
@@ -473,7 +473,7 @@
         <div class="tag-punch"></div>
         <div class="tag-media clear"><div class="roll-core"><span class="roll-tube"></span></div><span class="tag-swatch-label">Transparente</span></div>
         <div class="tag-body">
-          <h3>Film Manual 50cm</h3>
+          <h3>Film transparente</h3>
           <dl class="spec">
             <div><dt>Ancho</dt><dd>50 cm</dd></div>
             <div><dt>Largo</dt><dd>300 m</dd></div>
@@ -487,7 +487,7 @@
         <div class="tag-punch"></div>
         <div class="tag-media black"><div class="roll-core"><span class="roll-tube"></span></div><span class="tag-swatch-label">Negro</span></div>
         <div class="tag-body">
-          <h3>Film Manual 50cm</h3>
+          <h3>Film negro</h3>
           <dl class="spec">
             <div><dt>Ancho</dt><dd>50 cm</dd></div>
             <div><dt>Largo</dt><dd>300 m</dd></div>
@@ -511,10 +511,6 @@
         </div>
       </div>
 
-    </div>
-
-    <div class="note-box mono">
-      Medidas de ejemplo para completar más adelante con tu catálogo real (anchos, largos, micronaje y precios).
     </div>
   </div>
 </section>
@@ -552,67 +548,11 @@
   </div>
 </section>
 
-<!-- IMPORTACIONES / FAQ -->
-<section class="section" id="importaciones">
-  <div class="container">
-    <div class="section-head reveal">
-      <span class="eyebrow-tag">Panel 03 — Importaciones</span>
-      <h2>Preguntas frecuentes</h2>
-    </div>
-    <p class="faq-intro reveal">¿Necesitás importar tu producto y no sabés por dónde empezar? Estamos acá para guiarte en cada paso y realizar todo el proceso por vos, de manera segura y eficiente. Con nuestro apoyo, importar se vuelve simple y sin complicaciones.</p>
-    <div class="faq-list reveal">
-      <details class="faq-item">
-        <summary>
-          <span class="faq-idx">P.01</span>
-          <span class="faq-q">¿Qué debo hacer para importar?</span>
-          <span class="faq-icon">+</span>
-        </summary>
-        <div class="faq-answer">Primero debés solicitar la cotización de lo que deseás importar, un proceso que toma 1 o 2 días. En esta etapa vas a tener que reunir documentos como el certificado de origen y el packing list, pero nosotros te ayudamos a obtener todo lo necesario para completar la importación sin problemas.</div>
-      </details>
-      <details class="faq-item">
-        <summary>
-          <span class="faq-idx">P.02</span>
-          <span class="faq-q">¿Cuánto se demora el proceso de importación?</span>
-          <span class="faq-icon">+</span>
-        </summary>
-        <div class="faq-answer">Dependiendo del presupuesto y del método de envío que selecciones, el despacho podría tardar hasta 2 meses en llegar a Chile. Te orientamos para que encuentres la alternativa más conveniente en tiempos y costos.</div>
-      </details>
-      <details class="faq-item">
-        <summary>
-          <span class="faq-idx">P.03</span>
-          <span class="faq-q">¿Se pueden negociar las tarifas?</span>
-          <span class="faq-icon">+</span>
-        </summary>
-        <div class="faq-answer">Nosotros cotizamos generalmente con 2 o 3 navieras para ofrecerte la mejor cuota posible, garantizando siempre la opción más conveniente según tus necesidades. Nuestro objetivo es brindarte un servicio transparente, ágil y con las tarifas más competitivas del mercado, para que puedas tomar la mejor decisión con total confianza.</div>
-      </details>
-    </div>
-  </div>
-</section>
-
-<!-- CTA -->
-<section class="section">
-  <div class="container">
-    <div class="cta-strip reveal">
-      <div class="cta-copy">
-        <h2>¿Necesitás film stretch para tu empresa?</h2>
-        <p>Escribinos ahora y te respondemos al toque con stock y precios.</p>
-        <a href="#" class="btn btn-primary wa-link" target="_blank" rel="noopener">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.29-1.39a9.9 9.9 0 0 0 4.75 1.21h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm5.8 14.13c-.24.68-1.4 1.32-1.93 1.4-.5.08-1.12.11-1.81-.11-.42-.13-.95-.31-1.64-.6-2.88-1.24-4.76-4.13-4.9-4.32-.14-.19-1.17-1.55-1.17-2.96 0-1.4.73-2.09 1-2.38.26-.28.57-.35.76-.35h.55c.18 0 .42-.07.65.5.24.58.82 2 .89 2.15.07.14.11.31.02.5-.09.18-.14.29-.27.45-.14.16-.29.36-.41.48-.14.14-.28.29-.12.57.16.28.72 1.19 1.55 1.93 1.06.95 1.96 1.24 2.24 1.38.28.14.44.12.6-.07.16-.19.68-.79.87-1.06.18-.28.36-.23.6-.14.24.09 1.53.72 1.79.85.26.13.43.19.5.3.06.11.06.63-.18 1.3z"/></svg>
-          Escribir por WhatsApp
-        </a>
-      </div>
-      <div class="cta-media">
-        <img src="assets/promo-film-stretch.png" alt="Promoción film stretch: 217 metros, caja de 6 unidades, $19.990">
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- FAQ RAPIDA -->
 <section class="section">
   <div class="container">
     <div class="section-head reveal">
-      <span class="eyebrow-tag">Panel 04 — Preguntas rápidas</span>
+      <span class="eyebrow-tag">Panel 03 — Preguntas rápidas</span>
       <h2>Antes de escribirnos</h2>
       <p>Las dudas más comunes sobre facturación, retiro y despacho.</p>
     </div>
@@ -653,6 +593,62 @@
         <h3>¿Despachan a región?</h3>
         <p>Sí, enviamos a todo Chile mediante Mercado Envíos, garantizando un despacho rápido y seguro.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section">
+  <div class="container">
+    <div class="cta-strip reveal">
+      <div class="cta-copy">
+        <h2>¿Necesitás film stretch para tu empresa?</h2>
+        <p>Escribinos ahora y te respondemos al toque con stock y precios.</p>
+        <a href="#" class="btn btn-primary wa-link" target="_blank" rel="noopener">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.29-1.39a9.9 9.9 0 0 0 4.75 1.21h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm5.8 14.13c-.24.68-1.4 1.32-1.93 1.4-.5.08-1.12.11-1.81-.11-.42-.13-.95-.31-1.64-.6-2.88-1.24-4.76-4.13-4.9-4.32-.14-.19-1.17-1.55-1.17-2.96 0-1.4.73-2.09 1-2.38.26-.28.57-.35.76-.35h.55c.18 0 .42-.07.65.5.24.58.82 2 .89 2.15.07.14.11.31.02.5-.09.18-.14.29-.27.45-.14.16-.29.36-.41.48-.14.14-.28.29-.12.57.16.28.72 1.19 1.55 1.93 1.06.95 1.96 1.24 2.24 1.38.28.14.44.12.6-.07.16-.19.68-.79.87-1.06.18-.28.36-.23.6-.14.24.09 1.53.72 1.79.85.26.13.43.19.5.3.06.11.06.63-.18 1.3z"/></svg>
+          Escribir por WhatsApp
+        </a>
+      </div>
+      <div class="cta-media">
+        <img src="assets/promo-film-stretch.png" alt="Promoción film stretch: 217 metros, caja de 6 unidades, $19.990">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IMPORTACIONES / FAQ -->
+<section class="section" id="importaciones">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow-tag">Panel 04 — Importaciones</span>
+      <h2>Preguntas frecuentes</h2>
+    </div>
+    <p class="faq-intro reveal">¿Querés importar tu producto? 📦 Te guiamos y hacemos todo por ti, de forma segura, simple y eficiente.</p>
+    <div class="faq-list reveal">
+      <details class="faq-item">
+        <summary>
+          <span class="faq-idx">P.01</span>
+          <span class="faq-q">¿Qué debo hacer para importar?</span>
+          <span class="faq-icon">+</span>
+        </summary>
+        <div class="faq-answer">Primero debés solicitar la cotización de lo que deseás importar, un proceso que toma 1 o 2 días. En esta etapa vas a tener que reunir documentos como el certificado de origen y el packing list, pero nosotros te ayudamos a obtener todo lo necesario para completar la importación sin problemas.</div>
+      </details>
+      <details class="faq-item">
+        <summary>
+          <span class="faq-idx">P.02</span>
+          <span class="faq-q">¿Cuánto se demora el proceso de importación?</span>
+          <span class="faq-icon">+</span>
+        </summary>
+        <div class="faq-answer">Dependiendo del presupuesto y del método de envío que selecciones, el despacho podría tardar hasta 2 meses en llegar a Chile. Te orientamos para que encuentres la alternativa más conveniente en tiempos y costos.</div>
+      </details>
+      <details class="faq-item">
+        <summary>
+          <span class="faq-idx">P.03</span>
+          <span class="faq-q">¿Se pueden negociar las tarifas?</span>
+          <span class="faq-icon">+</span>
+        </summary>
+        <div class="faq-answer">Nosotros cotizamos generalmente con 2 o 3 navieras para ofrecerte la mejor cuota posible, garantizando siempre la opción más conveniente según tus necesidades. Nuestro objetivo es brindarte un servicio transparente, ágil y con las tarifas más competitivas del mercado, para que puedas tomar la mejor decisión con total confianza.</div>
+      </details>
     </div>
   </div>
 </section>
@@ -755,7 +751,7 @@
 
 <script>
   // Numero de WhatsApp (formato internacional, sin +, espacios ni guiones)
-  const WHATSAPP_NUMBER = "56985501731";
+  const WHATSAPP_NUMBER = "56958501731";
   const WHATSAPP_MESSAGE = "Hola! Quiero consultar por film stretch (medidas y precios).";
   const waUrl = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(WHATSAPP_MESSAGE);
 
