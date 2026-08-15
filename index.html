@@ -96,33 +96,33 @@
   /* HERO */
   .hero{
     background:
-      radial-gradient(circle at 88% 12%, rgba(28,157,218,0.22), transparent 52%),
-      linear-gradient(165deg, #EEF7FD 0%, #DBEFFC 55%, #EAF4FB 100%);
-    color:var(--ink);
+      radial-gradient(circle at 88% 12%, rgba(255,255,255,0.16), transparent 52%),
+      linear-gradient(165deg, #0C6E9E 0%, #1C9DDA 55%, #0A4D70 100%);
+    color:#fff;
     padding:70px 0 60px;
     position:relative;
     overflow:hidden;
-    border-bottom:4px solid var(--accent);
+    border-bottom:4px solid var(--accent-deep);
   }
   .hero::before{
     content:"";position:absolute;inset:0;
     background:
-      repeating-linear-gradient(90deg, rgba(17,21,28,0.035) 0 1px, transparent 1px 64px),
-      repeating-linear-gradient(0deg, rgba(17,21,28,0.035) 0 1px, transparent 1px 64px);
+      repeating-linear-gradient(90deg, rgba(255,255,255,0.06) 0 1px, transparent 1px 64px),
+      repeating-linear-gradient(0deg, rgba(255,255,255,0.06) 0 1px, transparent 1px 64px);
     pointer-events:none;
   }
-  .hero-frame{position:absolute;inset:18px;border:1px solid rgba(12,110,158,0.2);pointer-events:none;}
+  .hero-frame{position:absolute;inset:18px;border:1px solid rgba(255,255,255,0.3);pointer-events:none;}
   .hero-frame span{position:absolute;width:16px;height:16px;}
-  .hero-frame span.tl{top:-1px;left:-1px;border-top:2px solid var(--accent-deep);border-left:2px solid var(--accent-deep);}
-  .hero-frame span.tr{top:-1px;right:-1px;border-top:2px solid var(--accent-deep);border-right:2px solid var(--accent-deep);}
-  .hero-frame span.bl{bottom:-1px;left:-1px;border-bottom:2px solid var(--accent-deep);border-left:2px solid var(--accent-deep);}
-  .hero-frame span.br{bottom:-1px;right:-1px;border-bottom:2px solid var(--accent-deep);border-right:2px solid var(--accent-deep);}
+  .hero-frame span.tl{top:-1px;left:-1px;border-top:2px solid #fff;border-left:2px solid #fff;}
+  .hero-frame span.tr{top:-1px;right:-1px;border-top:2px solid #fff;border-right:2px solid #fff;}
+  .hero-frame span.bl{bottom:-1px;left:-1px;border-bottom:2px solid #fff;border-left:2px solid #fff;}
+  .hero-frame span.br{bottom:-1px;right:-1px;border-bottom:2px solid #fff;border-right:2px solid #fff;}
   .hero-grid{display:grid;grid-template-columns:1.05fr 0.95fr;gap:56px;align-items:center;position:relative;}
   .hero-tag{
     display:inline-flex;align-items:center;gap:8px;
     font-family:var(--font-mono);font-size:0.72rem;font-weight:600;
-    letter-spacing:1.5px;text-transform:uppercase;color:var(--accent-deep);
-    border:1px solid rgba(12,110,158,0.4);
+    letter-spacing:1.5px;text-transform:uppercase;color:#fff;
+    border:1px solid rgba(255,255,255,0.5);
     padding:6px 12px;margin-bottom:20px;
   }
   .hero h1{
@@ -130,11 +130,12 @@
     line-height:1.08;
     letter-spacing:0.2px;
     margin-bottom:20px;
+    color:#fff;
   }
-  .hero h1 span{color:var(--accent);}
+  .hero h1 span{color:#BFE7FF;}
   .hero p{
     font-family:var(--font-body);
-    color:var(--muted);
+    color:rgba(255,255,255,0.85);
     font-size:1.05rem;
     max-width:480px;
     margin-bottom:30px;
@@ -545,7 +546,6 @@
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.29-1.39a9.9 9.9 0 0 0 4.75 1.21h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm5.8 14.13c-.24.68-1.4 1.32-1.93 1.4-.5.08-1.12.11-1.81-.11-.42-.13-.95-.31-1.64-.6-2.88-1.24-4.76-4.13-4.9-4.32-.14-.19-1.17-1.55-1.17-2.96 0-1.4.73-2.09 1-2.38.26-.28.57-.35.76-.35h.55c.18 0 .42-.07.65.5.24.58.82 2 .89 2.15.07.14.11.31.02.5-.09.18-.14.29-.27.45-.14.16-.29.36-.41.48-.14.14-.28.29-.12.57.16.28.72 1.19 1.55 1.93 1.06.95 1.96 1.24 2.24 1.38.28.14.44.12.6-.07.16-.19.68-.79.87-1.06.18-.28.36-.23.6-.14.24.09 1.53.72 1.79.85.26.13.43.19.5.3.06.11.06.63-.18 1.3z"/></svg>
           Consultar por WhatsApp
         </a>
-        <a href="#productos" class="btn btn-outline">Ver medidas disponibles</a>
       </div>
     </div>
 
