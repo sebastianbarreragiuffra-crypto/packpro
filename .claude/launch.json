@@ -6,6 +6,12 @@
       "runtimeExecutable": "python",
       "runtimeArgs": ["-m", "http.server", "8834"],
       "port": 8834
+    },
+    {
+      "name": "dog-lovee-web",
+      "runtimeExecutable": "C:\\Users\\shermii\\Desktop\\DOG LOVEE\\scripts\\start-web.cmd",
+      "runtimeArgs": [],
+      "port": 8836
     }
   ]
 }
